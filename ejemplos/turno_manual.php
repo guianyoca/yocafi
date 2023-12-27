@@ -1,0 +1,99 @@
+<?php
+	
+	session_start();
+	
+	if(!isset($_SESSION['id'])){
+		header("Location: index.php");
+	}
+	
+    $id = $_SESSION['id'];
+	$nombre = $_SESSION['nombre'];
+	$tipo_usuario = $_SESSION['tipo_usuario'];
+	
+	
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Sistema DSS</title>
+        <link rel="stylesheet" type="" href="bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" type="" href="css/estilos.css">
+        <link href="css/styles.css" rel="stylesheet" />
+        <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+	</head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <a class="navbar-brand" href="principal.php">Sistema DSS</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
+            >
+            <ul class="navbar-nav ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $nombre; ?><i class="fas fa-user fa-fw"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#">Configuración</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="logout.php">Salir</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div id="layoutSidenav">
+           <?php
+           include "inc_nav.php";
+           ?>
+            <div id="layoutSidenav_content">
+                <main>
+                    <br>
+                    <br>
+                    <center>
+                        <h1 class="section-title">Cargar turno manual</h1><br>
+                        <h3 class="section-title">Datos del turno:</h3><br>
+                    <form method="POST" action="cargo_turno_manual.php" class="form-group">
+                        Ingrese la fecha: <input class="form-control-lg-6" type="date" name="fecha"><br><br>
+                        Seleccione el turno: <select class="form-control-lg-6" name="turno">
+                                                <option value="08:00HS - 09:30HS">08:00HS - 09:30HS</option>
+                                                <option value="10:00HS - 11:30HS">10:00HS - 11:30HS</option>
+                                                <option value="12:00HS - 13:30HS">12:00HS - 13:30HS</option>
+                                                <option value="14:00HS - 15:30HS">14:00HS - 15:30HS</option>
+                                                <option value="16:00HS - 17:30HS">16:00HS - 17:30HS</option>
+                                                <option value="18:00HS - 19:30HS">18:00HS - 19:30HS</option>
+                                                <option value="20:00HS - 21:30HS">20:00HS - 21:30HS</option>
+                                            </select><br><br>
+                        Ingrese el Nombre del afiliado: <input class="form-control-lg-6" type="text" name="nombre"><br><br>
+                        Ingrese el Apellido del afiliado: <input class="form-control-lg-6" type="text" name="apellido"><br><br>
+                        Ingrese el DNI del afiliado: <input class="form-control-lg-6" type="number" name="dni"><br><br>
+                        <input class="btn-success" type="submit" name="cargar" value="CARGAR">
+                    </form>
+                    </center>
+				</main>
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; YocaTech 2021</div>
+                            <div>
+                                <a href="https://www.divisionserviciossociales.com.ar">WEB OFICIAL</a>
+                                &middot;
+                               <!--  <a href="#">Terminos &amp; Condiciones</a> -->
+							</div>
+						</div>
+					</div>
+				</footer>
+			</div>
+		</div>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/datatables-demo.js"></script>
+	</body>
+</html>

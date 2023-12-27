@@ -1,0 +1,5 @@
+.dss-fondo{
+    image-rendering: 10%;
+    background:url("../img/gym.jpg");
+    background-size: cover;
+}
