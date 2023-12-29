@@ -32,7 +32,7 @@
            ?>
             <div id="layoutSidenav_content">
                 <main>
-                    <h1 class="text-center">Afiliados</h1>    
+                    <h1 class="text-center">Estado de Cuentas</h1>    
     
     <div class="container">
        <div class="row">
@@ -43,8 +43,8 @@
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>DNI</th>
-                        <th>Tipo de Afiliado</th>
-                        <th>Estado</th>
+                        <th>Saldo</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
