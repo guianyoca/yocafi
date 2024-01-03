@@ -41,32 +41,23 @@
                 <thead>
                     <tr>
                         <th>Nombre</th>
-                        <th>Apellido</th>
                         <th>DNI</th>
                         <th>Tipo de Afiliado</th>
                         <th>Estado</th>
+                        <th>Accion</th>
                     </tr>
                 </thead>
                 <tbody>
                    <?php while ($row = $resultado->fetch_assoc()) { ?>
                     <tr>
-                        <td><?php echo $row['nombre']; ?></td>
-                        <td><?php echo $row['apellido']; ?></td>
+                        <td><?php echo $row['nombre']." ".$row['apellido']; ?></td>
                         <td><?php echo $row['dni']; ?></td>
                         <td><?php echo $row['tipo_socio']; ?></td>
+                        <td><?php echo $row['estado']; ?></td>
 
-                      
-                        <?php 
-                         if ($row['estado']==1) {?>
-                             <td style='background-color:#D4F7D4'><span class="badge badge-success badge-pill col-6"> Habilitado</span><a href="dar_habilitacion.php?id=<?php echo $row['id']; ?>&nombre=<?php echo $row['nombre']; ?>&apellido=<?php echo $row['apellido']; ?>&fecha=<?php echo $hoy; ?>&estado=<?php echo 'Suspendido'; ?>"class='btn btn-danger col-6'>Suspender</a></td>
-                         <?php     
-                         }elseif ($row['estado']==0) {?>
-                             <td style='background-color:#F1D5D7'><span class="badge badge-danger badge-pill col-6"> Suspendido</span><a href="dar_habilitacion.php?id=<?php echo $row['id']; ?>&nombre=<?php echo $row['nombre']; ?>&apellido=<?php echo $row['apellido']; ?>&fecha=<?php echo $hoy; ?>&estado=<?php echo 'Habilitado'; ?>" class='btn btn-success col-6'>Habilitar</a></td>
-                        <?php
-                         } else {
-                        ?>
-                           <td> <a href="dar_habilitacion.php?id=<?php echo $row['id']; ?>&nombre=<?php echo $row['nombre']; ?>&apellido=<?php echo $row['apellido']; ?>&dni=<?php echo $row['dni']; ?>&telefono=<?php echo $row['telefono']; ?>&fecha=<?php echo $hoy; ?>&estado=<?php echo 'Habilitado'; ?>" class='btn btn-success col-6'>Habilitar</a><a href="dar_habilitacion.php?id=<?php echo $row['id']; ?>&nombre=<?php echo $row['nombre']; ?>&apellido=<?php echo $row['apellido']; ?>&dni=<?php echo $row['dni']; ?>&telefono=<?php echo $row['telefono']; ?>&fecha=<?php echo $hoy; ?>&estado=<?php echo 'Suspendido'; ?>"class='btn btn-danger col-6'>Suspender</a></td>
-                        <?php } ?> 
+
+            
+                             <td><a href="ver_ficha.php?id=<?php echo $row['id']; ?>"class='btn btn-info col-12'>Ver Ficha</a></td>
                    
                     </tr>
                     <?php } ?>
