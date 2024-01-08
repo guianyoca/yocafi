@@ -23,7 +23,7 @@
 			if($password_bd == $pass_c){
 				
 				$_SESSION['id'] = $row['id'];
-				$_SESSION['nombre'] = $row['nombre'];
+				$_SESSION['usuario'] = $row['nombre'];
 				$_SESSION['tipo_usuario'] = $row['tipo_usuario'];
 				
 				header("Location: pages/principal.php");

@@ -8,7 +8,7 @@
     require 'conexion.php';
 
     $id = $_SESSION['id'];
-    $nombre = $_SESSION['nombre'];
+    $usuario = $_SESSION['usuario'];
     $tipo_usuario = $_SESSION['tipo_usuario'];
     
     $hoy=date('d-m-Y');
