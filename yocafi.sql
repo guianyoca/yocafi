@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-12-2023 a las 05:52:45
+-- Tiempo de generación: 08-01-2024 a las 02:54:52
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -43,20 +43,25 @@ CREATE TABLE `afiliado_titular` (
   `padron` text NOT NULL,
   `sector_laboral` text NOT NULL,
   `fecha_carga` date NOT NULL DEFAULT current_timestamp(),
+  `hora_carga` time NOT NULL DEFAULT current_timestamp(),
   `usuario_carga` text NOT NULL,
   `estado` text NOT NULL,
   `observacion` text DEFAULT NULL,
   `fecha_estado` date DEFAULT NULL,
-  `fecha_baja` date DEFAULT NULL
+  `hora_estado` time DEFAULT NULL,
+  `fecha_baja` date DEFAULT NULL,
+  `hora_baja` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `afiliado_titular`
 --
 
-INSERT INTO `afiliado_titular` (`id`, `nombre`, `apellido`, `dni`, `fecha_nacimiento`, `domicilio`, `telefono`, `email`, `departamento`, `estado_civil`, `genero`, `tipo_socio`, `padron`, `sector_laboral`, `fecha_carga`, `usuario_carga`, `estado`, `observacion`, `fecha_estado`, `fecha_baja`) VALUES
-(1, 'Guille', 'Yornet', '36034573', '1992-07-01', 'LIMA 1397 barrio victoria', '2645457386', 'guianyoca@gmail.com', 'RAWSON', 'SOLTERO', 'MASCULINO', 'POLICIA EN ACTIVIDAD', '5067681', '<br />\r\n<b>Warning</b>:  Undefined variable $tipo_socio in <b>E:\\xampp\\htdocs\\tienda\\Views\\admin\\afiliacion\\index.php</b> on line <b>129</b><br />\r\n<br />\r\n<b>Warning</b>:  Trying to access array offset on value of type null in <b>E:\\xampp\\htdocs\\tienda\\Views\\admin\\afiliacion\\index.php</b> on line <b>129</b><br />\r\n', '2023-11-27', '', 'HABILITADO', '', NULL, NULL),
-(2, 'sad', 'asd', '36034573', '0015-02-21', 'asd', '+542645457386', 'guianyoca@gmail.com', 'CAPITAL', 'CASADO', 'MASCULINO', 'POLICIA RETIRADO', '988595', '<br />\r\n<b>Warning</b>:  Undefined variable $tipo_socio in <b>E:\\xampp\\htdocs\\tienda\\Views\\admin\\afiliacion\\index.php</b> on line <b>129</b><br />\r\n<br />\r\n<b>Warning</b>:  Trying to access array offset on value of type null in <b>E:\\xampp\\htdocs\\tienda\\Views\\admin\\afiliacion\\index.php</b> on line <b>129</b><br />\r\n', '2023-12-11', '', 'HABILITADO', '', NULL, NULL);
+INSERT INTO `afiliado_titular` (`id`, `nombre`, `apellido`, `dni`, `fecha_nacimiento`, `domicilio`, `telefono`, `email`, `departamento`, `estado_civil`, `genero`, `tipo_socio`, `padron`, `sector_laboral`, `fecha_carga`, `hora_carga`, `usuario_carga`, `estado`, `observacion`, `fecha_estado`, `hora_estado`, `fecha_baja`, `hora_baja`) VALUES
+(1, 'Guille', 'Yornet', '36034573', '1992-07-01', 'LIMA 1397 barrio victoria', '2645457386', 'guianyoca@gmail.com', 'RAWSON', 'SOLTERO', 'MASCULINO', 'POLICIA EN ACTIVIDAD', '5067681', '<br />\r\n<b>Warning</b>:  Undefined variable $tipo_socio in <b>E:\\xampp\\htdocs\\tienda\\Views\\admin\\afiliacion\\index.php</b> on line <b>129</b><br />\r\n<br />\r\n<b>Warning</b>:  Trying to access array offset on value of type null in <b>E:\\xampp\\htdocs\\tienda\\Views\\admin\\afiliacion\\index.php</b> on line <b>129</b><br />\r\n', '2023-11-27', '00:00:00', '', 'HABILITADO', '', NULL, NULL, NULL, NULL),
+(2, 'sad', 'asd', '36034573', '0015-02-21', 'asd', '+542645457386', 'guianyoca@gmail.com', 'CAPITAL', 'CASADO', 'MASCULINO', 'POLICIA RETIRADO', '988595', '<br />\r\n<b>Warning</b>:  Undefined variable $tipo_socio in <b>E:\\xampp\\htdocs\\tienda\\Views\\admin\\afiliacion\\index.php</b> on line <b>129</b><br />\r\n<br />\r\n<b>Warning</b>:  Trying to access array offset on value of type null in <b>E:\\xampp\\htdocs\\tienda\\Views\\admin\\afiliacion\\index.php</b> on line <b>129</b><br />\r\n', '2023-12-11', '00:00:00', '', 'HABILITADO', '', NULL, NULL, NULL, NULL),
+(3, 'Guille', 'Yornet', '36034575', '0000-00-00', 'LIMA', '+542645457386', 'guianyoca@gmail.com', 'CAPITAL', 'SOLTERO', 'MASCULINO', 'POLICIA EN ACTIVIDAD', '6546', '0', '2024-01-07', '00:00:00', '07-01-2024', 'HABILITADO', 'fs', NULL, NULL, NULL, NULL),
+(4, 'Guille', 'Yornet', '36034579', '0009-05-02', 'LIMA', '+542645457386', 'guianyoca@gmail.com', 'CAPITAL', 'SOLTERO', 'MASCULINO', 'POLICIA EN ACTIVIDAD', '958989', '0', '2024-01-07', '00:00:00', 'admin', 'HABILITADO', '0606606', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -344,7 +349,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `afiliado_titular`
 --
 ALTER TABLE `afiliado_titular`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`

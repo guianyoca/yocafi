@@ -35,8 +35,23 @@
     
                     <h1 class="text-center">Ficha de Afiliado</h1>    
     <?php while ($row = $resultado->fetch_assoc()) { ?>
-                    <div class="container mt-5">
-  
+      
+            <div class="container">
+                <div class="row">
+                    <div class='col'>
+                    <a href="ver_integrantes.php?id=<?php echo $row['id']; ?>"class='btn btn-info col-12'>Integrantes</a>
+                    </div>
+                    <div class='col'>
+                    <a href="ver_documentos.php?id=<?php echo $row['id']; ?>"class='btn btn-info col-12'>Documentos digitales</a>
+                    </div>
+                    <div class='col'>
+                    <a href="ver_ficha.php?id=<?php echo $row['id']; ?>"class='btn btn-info col-12'>Ver Ficha</a>
+                    </div>
+                    
+                </div>
+            </div> 
+
+ <div class="container mt-5">           
   <table class="table table-striped">
     <tr>
         <th>Nombre</th>
