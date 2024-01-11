@@ -39,20 +39,20 @@
             <div class="container">
                 <div class="row">
                     <div class='col'>
-                    <a href="ver_integrantes.php?id=<?php echo $row['id']; ?>"class='btn btn-info col-12'>Integrantes</a>
+                    <a href="ver_integrantes.php?id=<?php echo $row['id']; ?>&nombre_titular=<?php echo $row['nombre'].' '.$row['apellido']; ?>"class='btn btn-primary col-12'>Integrantes</a>
                     </div>
                     <div class='col'>
-                    <a href="ver_documentos.php?id=<?php echo $row['id']; ?>"class='btn btn-info col-12'>Documentos digitales</a>
+                    <a href="ver_documentos.php?id=<?php echo $row['id']; ?>"class='btn btn-primary col-12'>Documentos digitales</a>
                     </div>
                     <div class='col'>
-                    <a href="ver_ficha.php?id=<?php echo $row['id']; ?>"class='btn btn-info col-12'>Ver Ficha</a>
+                    <a href="imprimir_ficha.php?id=<?php echo $row['id']; ?>"class='btn btn-primary col-12'>Imprimir Ficha</a>
                     </div>
                     
                 </div>
             </div> 
 
  <div class="container mt-5">           
-  <table class="table table-striped">
+  <table class="table table-striped table-primary">
     <tr>
         <th>Nombre</th>
         <td><?php echo $row['nombre']; ?></td>

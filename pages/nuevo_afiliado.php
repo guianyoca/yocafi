@@ -29,6 +29,10 @@
       // Desactivar el autocompletado para todos los inputs
       $('input').attr('autocomplete', 'off');
     });
+
+    function mayus(e) {
+    e.value = e.value.toUpperCase();
+}
   </script>
     <body class="sb-nav-fixed">
     <?php
@@ -50,13 +54,13 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" autocomplete="off" required>
+                    <input type="text" class="form-control" id="nombre" name="nombre" autocomplete="off" onkeyup="mayus(this);" required>
                 </div>
             </div> 
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="apellido">Apellido</label>
-                    <input type="text" class="form-control" id="apellido" name="apellido" autocomplete="off" required>
+                    <input type="text" class="form-control" id="apellido" name="apellido" autocomplete="off" onkeyup="mayus(this);" required>
                 </div>
             </div> 
             <div class="col-md-4">
@@ -74,7 +78,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="domicilio">Domicilio</label>
-                    <input type="text" class="form-control" id="domicilio" name="domicilio" autocomplete="off" required>
+                    <input type="text" class="form-control" id="domicilio" name="domicilio" autocomplete="off" onkeyup="mayus(this);" required>
                 </div>
             </div> 
             <div class="col-md-4">

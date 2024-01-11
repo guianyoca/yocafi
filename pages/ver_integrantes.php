@@ -12,10 +12,16 @@
     $tipo_usuario = $_SESSION['tipo_usuario'];
     
     $hoy=date('d-m-Y');
+    $ficha=$_GET['id'];
 
-
-    $sql = "SELECT * FROM afiliado_titular";
+    $sql = "SELECT * FROM afiliado_titular WHERE id='$ficha'";
     $resultado = $mysqli->query($sql);
+    while ($row = $resultado->fetch_assoc()) {
+        $id_titular=$row['id_titular'];
+        $nombre_titular=$row['nombre'].' '.$row['apellido'];
+    }
+    $sql2 = "SELECT * FROM integrantes WHERE id_titular='$ficha'";
+    $resultado2 = $mysqli->query($sql2);
     
 ?>
 
@@ -31,44 +37,53 @@
            include "inc_nav.php";
            ?>
             <div id="layoutSidenav_content">
-                <main>
-                    <h1 class="text-center">Afiliados</h1>    
+    <main>
     
-    <div class="container">
-       <div class="row">
-           <div class="col-lg-12">
-            <table id="example" class="table table-bordered  display nowrap" cellspacing="0" width="100%">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>DNI</th>
-                        <th>Tipo de Afiliado</th>
-                        <th>Estado</th>
-                        <th>Accion</th>
-                    </tr>
-                </thead>
-                <tbody>
-                   <?php while ($row = $resultado->fetch_assoc()) { ?>
-                    <tr>
-                        <td><?php echo $row['nombre']." ".$row['apellido']; ?></td>
-                        <td><?php echo $row['dni']; ?></td>
-                        <td><?php echo $row['tipo_socio']; ?></td>
-                        <td><?php echo $row['estado']; ?></td>
-
-
-            
-                             <td><a href="ver_ficha.php?id=<?php echo $row['id']; ?>"class='btn btn-primary col-12'>Ver Ficha</a></td>
-                   
-                    </tr>
-                    <?php } ?>
-                </tbody>
-            </table>  
-         
-           </div>
-       </div> 
-    </div>
-   
+                    <h1 class="text-center">Integrantes del Afiliado <?php echo $nombre_titular; ?></h1>    
+                    <div class="container">
+                        <div class="row">
+                            <div class='col'>
+                            <a href="nuevo_integrante.php?id=<?php echo $id_titular; ?>"class='btn btn-primary col-6'>Nuevo Integrante +</a>
+                            </div>
+                            <div class='col'>
+                            <a href="#"class='btn btn-primary col-6'>Imprimir</a>
+                            </div>
+                        </div>
+                    </div>        
     
+      
+
+ <div class="container mt-5">           
+  <table class="table table-bordered table-primary">
+    <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>N° de DNI</th>
+        <th>Fecha de Nacimiento</th>
+        <th>Genero</th>
+        <th>Vinculo</th>
+        <th>Estado</th>
+        <th>Acción</th>
+    </tr>
+    <?php while ($row2 = $resultado2->fetch_assoc()) { ?>
+    <tr>
+    
+        <td><?php echo $row2['nombre']; ?></td>
+        <td><?php echo $row2['apellido']; ?></td>
+        <td><?php echo $row2['dni']; ?></td>
+        <td><?php echo $row2['fecha_nacimiento']; ?></td>
+        <td><?php echo $row2['genero']; ?></td>
+        <td><?php echo $row2['vinculo']; ?></td>
+        <td><?php echo $row2['vinculo']; ?></td>
+        <td><a href="nuevo_integrante.php?id=<?php echo $row2['id']; ?>"class='btn btn-primary'>Editar</a>
+        <a href="nuevo_integrante.php?id=<?php echo $row2['id']; ?>"class='btn btn-danger'>Eliminar</a></td>
+        
+    </tr>
+    <?php } ?>
+  </table>
+</div>
+
+                    
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
