@@ -105,7 +105,7 @@ window.location.href='index.php';
     </section>
 				
             <div id="layoutAuthentication_footer">
-                <footer class="py-4 bg-dark mt-auto">
+                <footer class="py-4 bg-dark">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">Copyright &copy; <a href="http://www.yocatech.com">YocaTech 2021</a></div>
