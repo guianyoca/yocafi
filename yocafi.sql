@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-01-2024 a las 02:54:52
+-- Tiempo de generación: 11-01-2024 a las 04:55:32
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -66,39 +66,6 @@ INSERT INTO `afiliado_titular` (`id`, `nombre`, `apellido`, `dni`, `fecha_nacimi
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `categorias`
---
-
-CREATE TABLE `categorias` (
-  `id` int(11) NOT NULL,
-  `categoria` text NOT NULL,
-  `estado` text NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Volcado de datos para la tabla `categorias`
---
-
-INSERT INTO `categorias` (`id`, `categoria`, `estado`) VALUES
-(1, 'w', '0');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `clientes`
---
-
-CREATE TABLE `clientes` (
-  `id` int(11) NOT NULL,
-  `nombre` text NOT NULL,
-  `correo` text NOT NULL,
-  `clave` text NOT NULL,
-  `token` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `departamentos_sj`
 --
 
@@ -135,55 +102,35 @@ INSERT INTO `departamentos_sj` (`id`, `departamento`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `detalle_pedidos`
+-- Estructura de tabla para la tabla `integrantes`
 --
 
-CREATE TABLE `detalle_pedidos` (
+CREATE TABLE `integrantes` (
   `id` int(11) NOT NULL,
-  `producto` int(11) NOT NULL,
-  `precio` int(11) NOT NULL,
-  `cantidad` int(11) NOT NULL,
-  `id_pedido` int(11) NOT NULL,
-  `id_producto` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `pedidos`
---
-
-CREATE TABLE `pedidos` (
-  `id` int(11) NOT NULL,
-  `id_transaccion` int(11) NOT NULL,
-  `monto` decimal(10,0) NOT NULL,
-  `estado` int(11) NOT NULL,
-  `proceso` text NOT NULL,
-  `fecha` datetime NOT NULL DEFAULT current_timestamp(),
-  `email` text NOT NULL,
+  `id_titular` int(11) NOT NULL,
   `nombre` text NOT NULL,
   `apellido` text NOT NULL,
-  `direccion` text NOT NULL,
-  `ciudad` text NOT NULL,
-  `id_cliente` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
+  `dni` int(11) NOT NULL,
+  `fecha_nacimiento` date NOT NULL,
+  `genero` text NOT NULL,
+  `vinculo` text NOT NULL,
+  `fecha_carga` date NOT NULL DEFAULT current_timestamp(),
+  `hora_carga` time NOT NULL DEFAULT current_timestamp(),
+  `usuario_carga` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Estructura de tabla para la tabla `productos`
+-- Volcado de datos para la tabla `integrantes`
 --
 
-CREATE TABLE `productos` (
-  `id` int(11) NOT NULL,
-  `nombre` text NOT NULL,
-  `descripcion` text NOT NULL,
-  `precio` decimal(10,0) NOT NULL,
-  `cantidad` int(11) NOT NULL,
-  `imagen` text NOT NULL,
-  `id_categoria` int(11) NOT NULL,
-  `estado` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+INSERT INTO `integrantes` (`id`, `id_titular`, `nombre`, `apellido`, `dni`, `fecha_nacimiento`, `genero`, `vinculo`, `fecha_carga`, `hora_carga`, `usuario_carga`) VALUES
+(1, 4, 'NICO', 'YORNET', 6748988, '2022-10-12', 'MASCULINO', 'HIJO', '2024-01-10', '00:00:00', 'admin'),
+(2, 4, 'valentina', 'yornet', 54930474, '2015-09-02', 'FEMENINO', 'HIJO', '2024-01-10', '22:35:03', 'admin'),
+(3, 4, 'D', 'A', 878545, '0002-02-02', 'MASCULINO', 'CONYUGUE', '2024-01-10', '22:51:01', 'admin'),
+(4, 4, 'UJ', 'JU', 95467, '0009-09-09', 'MASCULINO', 'CONYUGUE', '2024-01-10', '22:57:41', 'admin'),
+(5, 4, 'REG', 'SDGG', 1214, '0001-11-11', 'MASCULINO', 'CONYUGUE', '2024-01-10', '22:58:57', 'admin'),
+(6, 4, 'UGCFDKJHGCKJU', 'JFCVLICFV', 5181691, '0001-11-11', 'MASCULINO', 'CONYUGUE', '2024-01-10', '23:01:35', 'admin'),
+(7, 4, 'OGHOADSF', 'AGBRBAERTBH', 19169919, '0001-11-11', 'MASCULINO', 'CONYUGUE', '2024-01-10', '23:03:28', 'admin');
 
 -- --------------------------------------------------------
 
@@ -287,41 +234,17 @@ ALTER TABLE `afiliado_titular`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `categorias`
---
-ALTER TABLE `categorias`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `clientes`
---
-ALTER TABLE `clientes`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indices de la tabla `departamentos_sj`
 --
 ALTER TABLE `departamentos_sj`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `detalle_pedidos`
+-- Indices de la tabla `integrantes`
 --
-ALTER TABLE `detalle_pedidos`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `pedidos`
---
-ALTER TABLE `pedidos`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `productos`
---
-ALTER TABLE `productos`
+ALTER TABLE `integrantes`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `categoria` (`id_categoria`);
+  ADD KEY `id_titular` (`id_titular`);
 
 --
 -- Indices de la tabla `sectores_laborales`
@@ -352,40 +275,16 @@ ALTER TABLE `afiliado_titular`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT de la tabla `categorias`
---
-ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de la tabla `clientes`
---
-ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `departamentos_sj`
 --
 ALTER TABLE `departamentos_sj`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT de la tabla `detalle_pedidos`
+-- AUTO_INCREMENT de la tabla `integrantes`
 --
-ALTER TABLE `detalle_pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `pedidos`
---
-ALTER TABLE `pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `productos`
---
-ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `integrantes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `sectores_laborales`
@@ -410,10 +309,10 @@ ALTER TABLE `usuarios`
 --
 
 --
--- Filtros para la tabla `productos`
+-- Filtros para la tabla `integrantes`
 --
-ALTER TABLE `productos`
-  ADD CONSTRAINT `categoria` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id`);
+ALTER TABLE `integrantes`
+  ADD CONSTRAINT `integrantes_ibfk_1` FOREIGN KEY (`id_titular`) REFERENCES `afiliado_titular` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
