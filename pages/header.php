@@ -20,7 +20,7 @@
 
 <!--  extension responsive  -->
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
-    <title>Sistema DSS</title>
+    <title>YOCAFI</title>
     <link rel="stylesheet" type="" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="" href="../css/estilos.css">
     <link href="../css/styles.css" rel="stylesheet" />

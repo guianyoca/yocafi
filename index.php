@@ -61,51 +61,63 @@ window.location.href='index.php';
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
+		<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    	<link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    	<link href="assets/css/style.css" rel="stylesheet">
         <title>YOCAFI</title>
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
 	</head>
-    <body class="bg-primary">
-        <div id="layoutAuthentication">
-            <div id="layoutAuthentication_content">
-                <main>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-5">
-                                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">ACCEDER A YOCAFI</h3></div>
-                                    <div class="card-body">
-                                        <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                                            <div class="form-group"><label class="small mb-1" for="inputEmailAddress">Usuario</label><input class="form-control py-4" id="inputEmailAddress" name="usuario" type="text" placeholder="Ingrese su usuario" required /></div>
-                                            <div class="form-group"><label class="small mb-1" for="inputPassword">Contraseña</label><input class="form-control py-4" id="inputPassword" name="password" type="password" placeholder="Ingrese su Contraseña" required /></div>
-                                            <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0"><!-- <a class="small" href="password.html">Olvido su Contraseña?</a> -->
-											<div class="card-body text-center">
-											<button type="submit" class="btn btn-primary">Ingresar</button>
-											</div>
-										</div>
-										</form>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</main>
-			</div>
+    <body>
+        
+				<section class="form-01-main">
+      <div class="form-cover">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-sub-main">
+              <div class="_main_head_as">
+                <a href="#">
+                  <img src="assets/images/vector.png">
+                </a>
+              </div>
+              <form action='index.php' method='post'>
+              <div class="form-group">
+                  <input id="usuario" name="usuario" class="form-control _ge_de_ol" type="text" placeholder="Usuario" required="" aria-required="true">
+              </div>
+
+              <div class="form-group">                                              
+                <input id="password" type="password" class="form-control" name="password" placeholder="Contraseña" required="required">
+                <i toggle="#password" class="fa fa-fw fa-eye toggle-password field-icon"></i>
+              </div>
+
+              <div class="form-group">
+                <div class="btn_uy">
+                  <span><input type="submit" class="btn-ingresar"></span>
+                </div>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+				
             <div id="layoutAuthentication_footer">
-                <footer class="py-4 bg-light mt-auto">
+                <footer class="py-4 bg-dark mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">Copyright &copy; <a href="http://www.yocatech.com">YocaTech 2021</a></div>
-                            <div>
+                              <div>
                                 <a href="#">Privacy Policy</a>
                                 &middot;
                                 <a href="#">Termino &amp; Condiciones</a>
-							</div>
-						</div>
-					</div>
-				</footer>
-			</div>
-		</div>
+                              </div>
+						      </div>
+					      </div>
+				      </footer>
+			      </div>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>

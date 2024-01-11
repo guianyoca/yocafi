@@ -65,7 +65,7 @@
                         <?php
                          } else {
                         ?>
-                           <td> <a href="dar_habilitacion.php?id=<?php echo $row['id']; ?>&nombre=<?php echo $row['nombre']; ?>&apellido=<?php echo $row['apellido']; ?>&dni=<?php echo $row['dni']; ?>&telefono=<?php echo $row['telefono']; ?>&fecha=<?php echo $hoy; ?>&estado=<?php echo 'Habilitado'; ?>" class='btn btn-success col-6'>Habilitar</a><a href="dar_habilitacion.php?id=<?php echo $row['id']; ?>&nombre=<?php echo $row['nombre']; ?>&apellido=<?php echo $row['apellido']; ?>&dni=<?php echo $row['dni']; ?>&telefono=<?php echo $row['telefono']; ?>&fecha=<?php echo $hoy; ?>&estado=<?php echo 'Suspendido'; ?>"class='btn btn-danger col-6'>Suspender</a></td>
+                           <td> <a href="dar_habilitacion.php?id=<?php echo $row['id']; ?>&nombre=<?php echo $row['nombre']; ?>&apellido=<?php echo $row['apellido']; ?>&dni=<?php echo $row['dni']; ?>&telefono=<?php echo $row['telefono']; ?>&fecha=<?php echo $hoy; ?>&estado=<?php echo 'Habilitado'; ?>" class='btn btn-success col-6 mr-1'>Habilitar</a><a href="dar_habilitacion.php?id=<?php echo $row['id']; ?>&nombre=<?php echo $row['nombre']; ?>&apellido=<?php echo $row['apellido']; ?>&dni=<?php echo $row['dni']; ?>&telefono=<?php echo $row['telefono']; ?>&fecha=<?php echo $hoy; ?>&estado=<?php echo 'Suspendido'; ?>"class='btn btn-danger col-6 '>Suspender</a></td>
                         <?php } ?> 
                    
                     </tr>

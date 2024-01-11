@@ -43,7 +43,7 @@
                     <div class="container">
                         <div class="row">
                             <div class='col'>
-                            <a href="nuevo_integrante.php?id=<?php echo $id_titular; ?>"class='btn btn-primary col-6'>Nuevo Integrante +</a>
+                            <a href="nuevo_integrante.php?id=<?php echo $ficha; ?>"class='btn btn-primary col-6'>Nuevo Integrante +</a>
                             </div>
                             <div class='col'>
                             <a href="#"class='btn btn-primary col-6'>Imprimir</a>
