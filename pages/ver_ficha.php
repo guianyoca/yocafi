@@ -98,6 +98,14 @@
         <td><?php echo $row['tipo_socio']; ?></td>
     </tr>
     <tr>
+        <th>Servicio de Salud</th>
+        <td><?php echo $row['servicio_salud']; ?></td>
+    </tr>
+    <tr>
+        <th>Socio Vitalicio</th>
+        <td><?php echo $row['socio_vitalicio']; ?></td>
+    </tr>
+    <tr>
         <th>N° de Padrón</th>
         <td><?php echo $row['padron']; ?></td>
     </tr>

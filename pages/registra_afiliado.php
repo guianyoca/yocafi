@@ -22,6 +22,7 @@ $email=$_POST['email'];
 $estado_civil=$_POST['estado_civil'];
 $genero=$_POST['genero'];
 $tipo_socio=$_POST['tipo_socio'];
+$servicio_salud=$_POST['servicio_salud'];
 $sector_laboral=$_POST['sector_laboral'];
 $num_padron=$_POST['num_padron'];
 $fecha_ingreso=$_POST['fecha_ingreso'];
@@ -36,7 +37,7 @@ $num = $resultado->num_rows;
 
 if($num===0){
 
-	$query2="INSERT INTO afiliado_titular (nombre, apellido, dni, fecha_nacimiento, domicilio, telefono, email, departamento, estado_civil, genero, tipo_socio, padron, sector_laboral, usuario_carga, estado, observacion) VALUES ('$nombre','$apellido','$dni','$fecha_nacimiento','$domicilio','$telefono','$email','$departamento','$estado_civil','$genero','$tipo_socio','$num_padron','$sector_laboral','$usuario_carga','$estado','$observacion')";
+	$query2="INSERT INTO afiliado_titular (nombre, apellido, dni, fecha_nacimiento, domicilio, telefono, email, departamento, estado_civil, genero, tipo_socio, servicio_salud, padron, sector_laboral, usuario_carga, estado, observacion) VALUES ('$nombre','$apellido','$dni','$fecha_nacimiento','$domicilio','$telefono','$email','$departamento','$estado_civil','$genero','$tipo_socio','$servicio_salud','$num_padron','$sector_laboral','$usuario_carga','$estado','$observacion')";
     $resultado2 = $mysqli->query($query2);
     
     echo "<script>

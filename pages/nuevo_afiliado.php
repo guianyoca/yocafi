@@ -134,6 +134,15 @@
             </div>
             <div class="col-md-4">
                 <div class="form-group">
+                    <label for="servicio_salud">Servicio de Salud</label>
+                    <select class="form-control" name="servicio_salud">
+                        <option value="NO">NO</option>
+                        <option value="SI">SI</option>
+                    </select>  
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
                     <label for="sector_laboral">Sector Laboral</label>
                     <select class="form-control" name="sector_laboral">
                     <?php while ($row3 = $resultado3->fetch_assoc()) { ?>

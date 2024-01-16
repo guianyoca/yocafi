@@ -91,6 +91,8 @@
                         <option value="HIJO">HIJO</option>
                         <option value="PADRE">PADRE</option>
                         <option value="MADRE">MADRE</option>
+                        <option value="COLATERAL">COLATERAL</option>
+                        <option value="OTRO">OTRO</option>
                     </select>    
                 </div>
             </div>
