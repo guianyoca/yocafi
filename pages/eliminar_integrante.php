@@ -6,11 +6,7 @@
         header("Location: index.php");
     }
     require 'conexion.php';
-    $nombre = $_SESSION['nombre'];
-    $apellido = $_SESSION['apellido'];
-    $nombre_apellido="$nombre $apellido";
-
-    
+      
     $id=$_GET['id'];
   
     $sql2 = "DELETE FROM integrantes WHERE id='$id'";
@@ -20,8 +16,8 @@
    
 
   echo "<script>
-alert('Su Turno Fue Cancelado');
-window.location.href='mis_turnos.php';
+alert('Integrante Fue Eliminado');
+window.location.href='ver_afiliados.php';
 </script>";
 
 ?>

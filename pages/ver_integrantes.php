@@ -62,6 +62,7 @@
         <th>Fecha de Nacimiento</th>
         <th>Genero</th>
         <th>Vinculo</th>
+        <th>Estado</th>
         <th>Acción</th>
     </tr>
     <?php while ($row2 = $resultado2->fetch_assoc()) { ?>
@@ -73,8 +74,9 @@
         <td><?php echo $row2['fecha_nacimiento']; ?></td>
         <td><?php echo $row2['genero']; ?></td>
         <td><?php echo $row2['vinculo']; ?></td>
-        <td><a href="nuevo_integrante.php?id=<?php echo $row2['id']; ?>"class='btn btn-primary'>Editar</a>
-        <a href="nuevo_integrante.php?id=<?php echo $row2['id']; ?>"class='btn btn-danger'>Eliminar</a></td>
+        <td><?php echo $row2['estado']; ?></td>
+        <td><a href="editar_integrante.php?id=<?php echo $row2['id']; ?>"class='btn btn-primary'>Editar</a>
+        <a href="eliminar_integrante.php?id=<?php echo $row2['id']; ?>"class='btn btn-danger'>Eliminar</a></td>
         
     </tr>
     <?php } ?>
