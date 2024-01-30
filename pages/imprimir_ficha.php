@@ -19,7 +19,6 @@ function Header()
     $this->Cell(80,10,'Nombre',1,0,'C',0);
 	$this->Cell(50,10,'Apellido',1,0,'C',0);
 	$this->Cell(50,10,'DNI',1,1,'C',0);
-  
 }
 
 // Pie de página

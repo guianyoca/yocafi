@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-01-2024 a las 22:00:15
+-- Tiempo de generación: 30-01-2024 a las 03:25:30
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -116,6 +116,7 @@ CREATE TABLE `integrantes` (
   `fecha_nacimiento` date NOT NULL,
   `genero` text NOT NULL,
   `vinculo` text NOT NULL,
+  `estado` varchar(20) NOT NULL DEFAULT 'HABILITADO',
   `fecha_carga` date NOT NULL DEFAULT current_timestamp(),
   `hora_carga` time NOT NULL DEFAULT current_timestamp(),
   `usuario_carga` text NOT NULL
@@ -125,14 +126,32 @@ CREATE TABLE `integrantes` (
 -- Volcado de datos para la tabla `integrantes`
 --
 
-INSERT INTO `integrantes` (`id`, `id_titular`, `nombre`, `apellido`, `dni`, `fecha_nacimiento`, `genero`, `vinculo`, `fecha_carga`, `hora_carga`, `usuario_carga`) VALUES
-(1, 4, 'NICO', 'YORNET', 6748988, '2022-10-12', 'MASCULINO', 'HIJO', '2024-01-10', '00:00:00', 'admin'),
-(2, 4, 'valentina', 'yornet', 54930474, '2015-09-02', 'FEMENINO', 'HIJO', '2024-01-10', '22:35:03', 'admin'),
-(3, 4, 'D', 'A', 878545, '0002-02-02', 'MASCULINO', 'CONYUGUE', '2024-01-10', '22:51:01', 'admin'),
-(4, 4, 'UJ', 'JU', 95467, '0009-09-09', 'MASCULINO', 'CONYUGUE', '2024-01-10', '22:57:41', 'admin'),
-(5, 4, 'REG', 'SDGG', 1214, '0001-11-11', 'MASCULINO', 'CONYUGUE', '2024-01-10', '22:58:57', 'admin'),
-(6, 4, 'UGCFDKJHGCKJU', 'JFCVLICFV', 5181691, '0001-11-11', 'MASCULINO', 'CONYUGUE', '2024-01-10', '23:01:35', 'admin'),
-(7, 4, 'OGHOADSF', 'AGBRBAERTBH', 19169919, '0001-11-11', 'MASCULINO', 'CONYUGUE', '2024-01-10', '23:03:28', 'admin');
+INSERT INTO `integrantes` (`id`, `id_titular`, `nombre`, `apellido`, `dni`, `fecha_nacimiento`, `genero`, `vinculo`, `estado`, `fecha_carga`, `hora_carga`, `usuario_carga`) VALUES
+(6, 4, 'UGCFDKJHGCKJU', 'JFCVLICFV', 5181691, '0001-11-11', 'MASCULINO', 'CONYUGUE', 'HABILITADO', '2024-01-10', '23:01:35', 'admin'),
+(7, 4, 'OGHOADSF', 'AGBRBAERTBH', 19169919, '0001-11-11', 'MASCULINO', 'CONYUGUE', 'HABILITADO', '2024-01-10', '23:03:28', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `observaciones`
+--
+
+CREATE TABLE `observaciones` (
+  `id` int(11) NOT NULL,
+  `id_titular` int(11) NOT NULL,
+  `observacion` text NOT NULL,
+  `tipo_observacion` varchar(50) NOT NULL,
+  `fecha_carga` date NOT NULL DEFAULT current_timestamp(),
+  `hora_carga` time NOT NULL DEFAULT current_timestamp(),
+  `usuario_carga` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `observaciones`
+--
+
+INSERT INTO `observaciones` (`id`, `id_titular`, `observacion`, `tipo_observacion`, `fecha_carga`, `hora_carga`, `usuario_carga`) VALUES
+(1, 4, 'asfdsafsdfasdfgsda', 'HABILITA', '2024-01-29', '22:30:55', 'admin');
 
 -- --------------------------------------------------------
 
@@ -249,6 +268,13 @@ ALTER TABLE `integrantes`
   ADD KEY `id_titular` (`id_titular`);
 
 --
+-- Indices de la tabla `observaciones`
+--
+ALTER TABLE `observaciones`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id_titular` (`id_titular`);
+
+--
 -- Indices de la tabla `sectores_laborales`
 --
 ALTER TABLE `sectores_laborales`
@@ -287,6 +313,12 @@ ALTER TABLE `departamentos_sj`
 --
 ALTER TABLE `integrantes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de la tabla `observaciones`
+--
+ALTER TABLE `observaciones`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `sectores_laborales`

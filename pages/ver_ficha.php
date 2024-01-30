@@ -47,6 +47,12 @@
                     <div class='col'>
                     <a href="imprimir_ficha.php?id=<?php echo $row['id']; ?>"class='btn btn-primary col-12'>Imprimir Ficha</a>
                     </div>
+                    <div class='col'>
+                    <a href="observaciones.php?id=<?php echo $row['id']; ?>"class='btn btn-primary col-12'>Observaciones</a>
+                    </div>
+                    <div class='col'>
+                    <a href="editar_ficha.php?id=<?php echo $row['id']; ?>"class='btn btn-primary col-12'>Editar Ficha</a>
+                    </div>
                     
                 </div>
             </div> 
