@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-01-2024 a las 03:25:30
+-- Tiempo de generación: 31-01-2024 a las 04:59:07
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -100,6 +100,30 @@ INSERT INTO `departamentos_sj` (`id`, `departamento`) VALUES
 (17, 'IGLESIA'),
 (18, 'ULLUM'),
 (19, 'ZONDA');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `documentos`
+--
+
+CREATE TABLE `documentos` (
+  `id` int(11) NOT NULL,
+  `id_titular` int(11) NOT NULL,
+  `descripcion` text NOT NULL,
+  `ubicacion` varchar(100) NOT NULL,
+  `fecha_carga` date NOT NULL DEFAULT current_timestamp(),
+  `hora_carga` time NOT NULL DEFAULT current_timestamp(),
+  `usuario_carga` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `documentos`
+--
+
+INSERT INTO `documentos` (`id`, `id_titular`, `descripcion`, `ubicacion`, `fecha_carga`, `hora_carga`, `usuario_carga`) VALUES
+(3, 3, '5641', 'documentos/escudo sj vectorizado.png', '2024-01-31', '00:56:05', 'admin'),
+(4, 3, '63543', 'documentos/1.png', '2024-01-31', '00:56:36', 'admin');
 
 -- --------------------------------------------------------
 
@@ -261,6 +285,13 @@ ALTER TABLE `departamentos_sj`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `documentos`
+--
+ALTER TABLE `documentos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_titular` (`id_titular`) USING BTREE;
+
+--
 -- Indices de la tabla `integrantes`
 --
 ALTER TABLE `integrantes`
@@ -272,7 +303,7 @@ ALTER TABLE `integrantes`
 --
 ALTER TABLE `observaciones`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id_titular` (`id_titular`);
+  ADD KEY `id_titular` (`id_titular`) USING BTREE;
 
 --
 -- Indices de la tabla `sectores_laborales`
@@ -309,6 +340,12 @@ ALTER TABLE `departamentos_sj`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
+-- AUTO_INCREMENT de la tabla `documentos`
+--
+ALTER TABLE `documentos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT de la tabla `integrantes`
 --
 ALTER TABLE `integrantes`
@@ -343,10 +380,22 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- Filtros para la tabla `documentos`
+--
+ALTER TABLE `documentos`
+  ADD CONSTRAINT `documentos_ibfk_1` FOREIGN KEY (`id_titular`) REFERENCES `afiliado_titular` (`id`) ON DELETE CASCADE;
+
+--
 -- Filtros para la tabla `integrantes`
 --
 ALTER TABLE `integrantes`
   ADD CONSTRAINT `integrantes_ibfk_1` FOREIGN KEY (`id_titular`) REFERENCES `afiliado_titular` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `observaciones`
+--
+ALTER TABLE `observaciones`
+  ADD CONSTRAINT `observaciones_ibfk_1` FOREIGN KEY (`id_titular`) REFERENCES `afiliado_titular` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
