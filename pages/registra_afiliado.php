@@ -25,10 +25,8 @@ $tipo_socio=$_POST['tipo_socio'];
 $servicio_salud=$_POST['servicio_salud'];
 $sector_laboral=$_POST['sector_laboral'];
 $num_padron=$_POST['num_padron'];
-$fecha_ingreso=$_POST['fecha_ingreso'];
-$observacion=$_POST['observacion'];
 $estado="HABILITADO";
-$fecha_creada=date("d-m-Y"); 
+$fecha_creada=date("Y-m-d"); 
 $hora_creada=date("H:i:s");
 
 $query = "SELECT dni FROM afiliado_titular WHERE dni='$dni'";
@@ -37,7 +35,7 @@ $num = $resultado->num_rows;
 
 if($num===0){
 
-	$query2="INSERT INTO afiliado_titular (nombre, apellido, dni, fecha_nacimiento, domicilio, telefono, email, departamento, estado_civil, genero, tipo_socio, servicio_salud, padron, sector_laboral, usuario_carga, estado, observacion) VALUES ('$nombre','$apellido','$dni','$fecha_nacimiento','$domicilio','$telefono','$email','$departamento','$estado_civil','$genero','$tipo_socio','$servicio_salud','$num_padron','$sector_laboral','$usuario_carga','$estado','$observacion')";
+	$query2="INSERT INTO afiliado_titular (nombre, apellido, dni, fecha_nacimiento, domicilio, telefono, email, departamento, estado_civil, genero, tipo_socio, servicio_salud, padron, sector_laboral, usuario_carga, estado, fecha_carga, hora_carga) VALUES ('$nombre','$apellido','$dni','$fecha_nacimiento','$domicilio','$telefono','$email','$departamento','$estado_civil','$genero','$tipo_socio','$servicio_salud','$num_padron','$sector_laboral','$usuario_carga','$estado','$fecha_creada','$hora_creada')";
     $resultado2 = $mysqli->query($query2);
     
     echo "<script>

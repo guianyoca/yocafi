@@ -120,10 +120,6 @@
         <td><?php echo $row['sector_laboral']; ?></td>
     </tr>
     <tr>
-        <th>Observación</th>
-        <td><?php echo $row['observacion']; ?></td>
-    </tr>
-    <tr>
         <th>Fecha de Ingreso</th>
         <td><?php echo $row['fecha_carga']; ?></td>
     </tr>
@@ -137,7 +133,12 @@
     </tr>
     <tr>
         <th>Estado</th>
-        <td><?php echo $row['estado']; ?></td>
+        <td class="<?php if ($row['estado']=='HABILITADO'){
+            echo 'alert-success';
+            }else{
+            echo 'alert-danger';  
+            }
+            ?>"><?php echo $row['estado']; ?></td>
     </tr>
     <tr>
         <th>Fecha de Estado</th>

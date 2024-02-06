@@ -57,7 +57,7 @@
 
 
             
-                             <td><a href="ver_ficha.php?id=<?php echo $row['id']; ?>"class='btn btn-primary col-12'>Ver Ficha</a></td>
+                             <td><a href="ver_ficha.php?id=<?php echo $row['id']; ?>"class='btn btn-primary col-6 mr-2'>Ver Ficha</a><a href="editar_ficha.php?id=<?php echo $row['id']; ?>"class='btn btn-dark col-6'>Editar</a></td>
                    
                     </tr>
                     <?php } ?>
