@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-02-2024 a las 02:23:14
+-- Tiempo de generación: 16-02-2024 a las 13:14:51
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -68,8 +68,51 @@ INSERT INTO `afiliado_titular` (`id`, `nombre`, `apellido`, `dni`, `fecha_nacimi
 (2, 'sad', 'asd', '36034573', '0015-02-21', 'asd', '+542645457386', 'guianyoca@gmail.com', 'CAPITAL', 'CASADO', 'MASCULINO', 'POLICIA RETIRADO', 'SI', 'NO', '988595', '97', '2023-12-11', '00:00:00', '', 'HABILITADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, ''),
 (3, 'Guille', 'Yornet', '36034575', '0000-00-00', 'LIMA', '+542645457386', 'guianyoca@gmail.com', 'CAPITAL', 'SOLTERO', 'MASCULINO', 'POLICIA EN ACTIVIDAD', 'SI', 'NO', '6546', '0', '2024-01-07', '00:00:00', '07-01-2024', 'HABILITADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, ''),
 (4, 'Guille', 'Yornet', '36034579', '0009-05-02', 'LIMA', '+542645457386', 'guianyoca@gmail.com', 'CAPITAL', 'SOLTERO', 'MASCULINO', 'POLICIA EN ACTIVIDAD', 'SI', 'NO', '958989', '0', '2024-01-07', '00:00:00', 'admin', 'HABILITADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, ''),
-(5, 'CARLOS', 'GODOY', '89858745', '0002-02-22', 'PEDRO VALDIVIA 1234 OESTE', '264897952', 'tr@gl.com', 'CAPITAL', 'VIUDO', 'MASCULINO', 'POLICIA RETIRADO', 'SI', '', '7456', '0', NULL, NULL, 'admin', 'HABILITADO', NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00', '22:17:38', 'admin'),
+(5, 'CARLOS', 'GODOY', '89858745', '0002-02-22', 'PEDRO VALDIVIA 1234 OESTE', '264897952', 'tr@gl.com', 'CAPITAL', 'VIUDO', 'MASCULINO', 'POLICIA RETIRADO', 'NO', '', '7456', '0', NULL, NULL, 'admin', 'HABILITADO', NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00', '20:21:56', 'admin'),
 (6, 'TOTO', 'RODRIGUEZ', '7854122', '1955-04-02', 'AGUILAR 321 SUR', '2645987878', 'toto@gmail.com', 'RAWSON', 'CASADO', 'MASCULINO', 'OFICIAL POLICIA DE SJ', 'NO', '', '589548', '97', '0000-00-00', '22:21:17', 'admin', 'HABILITADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `aportes`
+--
+
+CREATE TABLE `aportes` (
+  `id` int(11) NOT NULL,
+  `id_titular` int(11) NOT NULL,
+  `concepto` text DEFAULT NULL,
+  `descripcion` text DEFAULT NULL,
+  `deuda` int(11) DEFAULT NULL,
+  `pago` int(11) DEFAULT NULL,
+  `saldo` int(11) NOT NULL,
+  `fecha_carga` date DEFAULT NULL,
+  `hora_carga` time DEFAULT NULL,
+  `usuario_carga` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `aportes`
+--
+
+INSERT INTO `aportes` (`id`, `id_titular`, `concepto`, `descripcion`, `deuda`, `pago`, `saldo`, `fecha_carga`, `hora_carga`, `usuario_carga`) VALUES
+(1, 5, NULL, NULL, -5000, 5000, 0, '2024-02-10', '20:57:09', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comprobantes`
+--
+
+CREATE TABLE `comprobantes` (
+  `id` int(11) NOT NULL,
+  `id_titular` int(11) NOT NULL,
+  `monto` int(11) NOT NULL,
+  `concepto` text NOT NULL,
+  `descripcion` text NOT NULL,
+  `fecha_carga` date NOT NULL,
+  `hora_carga` time NOT NULL,
+  `usuario_carga` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -181,7 +224,8 @@ CREATE TABLE `observaciones` (
 --
 
 INSERT INTO `observaciones` (`id`, `id_titular`, `observacion`, `tipo_observacion`, `fecha_carga`, `hora_carga`, `usuario_carga`) VALUES
-(1, 4, 'asfdsafsdfasdfgsda', 'HABILITA', '2024-01-29', '22:30:55', 'admin');
+(1, 4, 'asfdsafsdfasdfgsda', 'HABILITA', '2024-01-29', '22:30:55', 'admin'),
+(2, 3, '                SE MUESTRA PRUEBA    ', 'OTRO', '2024-02-12', '13:39:47', 'admin');
 
 -- --------------------------------------------------------
 
@@ -285,6 +329,20 @@ ALTER TABLE `afiliado_titular`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `aportes`
+--
+ALTER TABLE `aportes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_titular` (`id_titular`) USING BTREE;
+
+--
+-- Indices de la tabla `comprobantes`
+--
+ALTER TABLE `comprobantes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_titular` (`id_titular`) USING BTREE;
+
+--
 -- Indices de la tabla `departamentos_sj`
 --
 ALTER TABLE `departamentos_sj`
@@ -340,6 +398,12 @@ ALTER TABLE `afiliado_titular`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT de la tabla `aportes`
+--
+ALTER TABLE `aportes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `departamentos_sj`
 --
 ALTER TABLE `departamentos_sj`
@@ -361,7 +425,7 @@ ALTER TABLE `integrantes`
 -- AUTO_INCREMENT de la tabla `observaciones`
 --
 ALTER TABLE `observaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `sectores_laborales`
@@ -384,6 +448,18 @@ ALTER TABLE `usuarios`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `aportes`
+--
+ALTER TABLE `aportes`
+  ADD CONSTRAINT `aportes_ibfk_1` FOREIGN KEY (`id_titular`) REFERENCES `afiliado_titular` (`id`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `comprobantes`
+--
+ALTER TABLE `comprobantes`
+  ADD CONSTRAINT `comprobantes_ibfk_1` FOREIGN KEY (`id_titular`) REFERENCES `afiliado_titular` (`id`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `documentos`

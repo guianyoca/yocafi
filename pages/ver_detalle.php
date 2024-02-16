@@ -12,12 +12,16 @@
     $tipo_usuario = $_SESSION['tipo_usuario'];
     
     $hoy=date('d-m-Y');
+    $ficha=$_GET['id'];
 
-
-    $sql = "SELECT afiliado_titular.*, aportes.*
-    FROM afiliado_titular
-    JOIN aportes ON afiliado_titular.id = aportes.id_titular";
+    $sql = "SELECT * FROM afiliado_titular WHERE id='$ficha'";
     $resultado = $mysqli->query($sql);
+    while ($row = $resultado->fetch_assoc()) {
+        $id_titular=$row['id_titular'];
+        $nombre_titular=$row['nombre'].' '.$row['apellido'];
+    }
+    $sql2 = "SELECT * FROM aportes WHERE id_titular='$ficha'";
+    $resultado2 = $mysqli->query($sql2);
     
 ?>
 
@@ -33,49 +37,55 @@
            include "inc_nav.php";
            ?>
             <div id="layoutSidenav_content">
-                <main>
-                    <h1 class="text-center">Estado de Cuentas</h1>    
+    <main>
     
-    <div class="container">
-       <div class="row">
-           <div class="col-lg-12">
-            <table id="example" class="table table-bordered  display nowrap" cellspacing="0" width="100%">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>DNI</th>
-                        <th>Padron</th>
-                        <th>Saldo</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                   <?php while ($row = $resultado->fetch_assoc()) { ?>
-                    <tr>
-                        <td><?php echo $row['nombre']; ?></td>
-                        <td><?php echo $row['apellido']; ?></td>
-                        <td><?php echo $row['dni']; ?></td>
-                        <td><?php echo $row['padron']; ?></td>
-                        <td class="<?php echo ($row['saldo'] < 0) ? 'text-danger' : 'text-success'; ?>">
-    <?php echo $row['saldo']; ?>
-</td>
-<td class="<?php echo ($row['estado'] == 'HABILITADO' ) ? 'badge-success' : 'badge-danger'; ?>">
-    <?php echo $row['estado']; ?></td>
+                    <h1 class="text-center">Detalle de Aportes del Afiliado <?php echo $nombre_titular; ?></h1>    
+                    <div class="container">
+                        <div class="row">
+                            <div class='col'>
+                            <a href="nuevo_aporte.php?id=<?php echo $ficha; ?>"class='btn btn-primary col-6'>Agregar Movimiento +</a>
+                            </div>
+                            <div class='col'>
+                            <a href="#"class='btn btn-primary col-6'>Imprimir</a>
+                            </div>
+                        </div>
+                    </div>        
+    
+      
 
-                         <td><a href="ver_detalle.php?id=<?php echo $row['id_titular']; ?>"class='btn btn-primary col-12 mr-2'>Ver Detalle</a></td>
-                   
-                    </tr>
-                    <?php } ?>
-                </tbody>
-            </table>  
-         
-           </div>
-       </div> 
-    </div>
-   
+ <div class="container mt-5">           
+  <table class="table table-bordered table-primary">
+    <tr>
+        <th>Deuda</th>
+        <th>Pago</th>
+        <th>Saldo</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Usuario</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Usuario</th>
+
+    </tr>
+    <?php while ($row2 = $resultado2->fetch_assoc()) { ?>
+    <tr>
     
+        <td><?php echo $row2['deuda']; ?></td>
+        <td><?php echo $row2['pago']; ?></td>
+        <td><?php echo $row2['saldo']; ?></td>
+        <td><?php echo $row2['fecha_deuda']; ?></td>
+        <td><?php echo $row2['hora_deuda']; ?></td>
+        <td><?php echo $row2['usuario_deuda']; ?></td>
+        <td><?php echo $row2['fecha_pago']; ?></td>
+        <td><?php echo $row2['hora_pago']; ?></td>
+        <td><?php echo $row2['usuario_pago']; ?></td>
+        
+    </tr>
+    <?php } ?>
+  </table>
+</div>
+
+                    
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
