@@ -56,12 +56,11 @@
  <div class="container mt-5">           
   <table class="table table-bordered table-primary">
     <tr>
+        <th>Concepto</th>
+        <th>Descripcion</th>
         <th>Deuda</th>
         <th>Pago</th>
         <th>Saldo</th>
-        <th>Fecha</th>
-        <th>Hora</th>
-        <th>Usuario</th>
         <th>Fecha</th>
         <th>Hora</th>
         <th>Usuario</th>
@@ -70,15 +69,14 @@
     <?php while ($row2 = $resultado2->fetch_assoc()) { ?>
     <tr>
     
+        <td><?php echo $row2['concepto']; ?></td>
+        <td><?php echo $row2['descripcion']; ?></td>
         <td><?php echo $row2['deuda']; ?></td>
         <td><?php echo $row2['pago']; ?></td>
         <td><?php echo $row2['saldo']; ?></td>
-        <td><?php echo $row2['fecha_deuda']; ?></td>
-        <td><?php echo $row2['hora_deuda']; ?></td>
-        <td><?php echo $row2['usuario_deuda']; ?></td>
-        <td><?php echo $row2['fecha_pago']; ?></td>
-        <td><?php echo $row2['hora_pago']; ?></td>
-        <td><?php echo $row2['usuario_pago']; ?></td>
+        <td><?php echo $row2['fecha_carga']; ?></td>
+        <td><?php echo $row2['hora_carga']; ?></td>
+        <td><?php echo $row2['usuario_carga']; ?></td>
         
     </tr>
     <?php } ?>

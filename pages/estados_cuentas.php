@@ -16,7 +16,12 @@
 
     $sql = "SELECT afiliado_titular.*, aportes.*
     FROM afiliado_titular
-    JOIN aportes ON afiliado_titular.id = aportes.id_titular";
+    JOIN aportes ON afiliado_titular.id = aportes.id_titular
+    JOIN (
+        SELECT id_titular, MAX(id) AS ultimo_aporte
+        FROM aportes
+        GROUP BY id_titular
+    ) AS ultimos_aportes ON aportes.id = ultimos_aportes.ultimo_aporte";
     $resultado = $mysqli->query($sql);
     
 ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-02-2024 a las 13:14:51
+-- Tiempo de generación: 18-02-2024 a las 01:06:04
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -85,9 +85,9 @@ CREATE TABLE `aportes` (
   `deuda` int(11) DEFAULT NULL,
   `pago` int(11) DEFAULT NULL,
   `saldo` int(11) NOT NULL,
-  `fecha_carga` date DEFAULT NULL,
-  `hora_carga` time DEFAULT NULL,
-  `usuario_carga` varchar(50) DEFAULT NULL
+  `fecha_carga` date NOT NULL DEFAULT current_timestamp(),
+  `hora_carga` time NOT NULL DEFAULT current_timestamp(),
+  `usuario_carga` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -95,7 +95,30 @@ CREATE TABLE `aportes` (
 --
 
 INSERT INTO `aportes` (`id`, `id_titular`, `concepto`, `descripcion`, `deuda`, `pago`, `saldo`, `fecha_carga`, `hora_carga`, `usuario_carga`) VALUES
-(1, 5, NULL, NULL, -5000, 5000, 0, '2024-02-10', '20:57:09', 'admin');
+(1, 5, 'CUOTA SOCIO', 'PAGA MES DE FEBRERO 2024', -5000, 5000, 0, '2024-02-10', '20:57:09', 'admin'),
+(2, 5, 'CUOTA SOCIO', '                    ', -4000, NULL, -4000, '2024-02-17', '19:36:23', 'admin'),
+(3, 5, 'CUOTA SOCIO', '                    pago cuota', NULL, 4000, 0, '2024-02-17', '19:36:52', 'admin'),
+(4, 5, 'OTRO', '                    prestamo', -7000, NULL, -7000, '2024-02-17', '19:42:50', 'admin'),
+(6, 5, 'OTRO', '               paga parte     ', NULL, 3000, -4000, '2024-02-17', '19:45:45', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `asientos`
+--
+
+CREATE TABLE `asientos` (
+  `id` int(11) NOT NULL,
+  `codigo` int(11) NOT NULL,
+  `nombre` varchar(80) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `asientos`
+--
+
+INSERT INTO `asientos` (`id`, `codigo`, `nombre`) VALUES
+(1, 1, 'CAJA');
 
 -- --------------------------------------------------------
 
@@ -111,6 +134,26 @@ CREATE TABLE `comprobantes` (
   `descripcion` text NOT NULL,
   `fecha_carga` date NOT NULL,
   `hora_carga` time NOT NULL,
+  `usuario_carga` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `contabilidad`
+--
+
+CREATE TABLE `contabilidad` (
+  `id` int(11) NOT NULL,
+  `id_titular` int(11) NOT NULL,
+  `codigo` varchar(50) NOT NULL,
+  `concepto` text DEFAULT NULL,
+  `descripcion` text DEFAULT NULL,
+  `debe` int(11) DEFAULT NULL,
+  `haber` int(11) DEFAULT NULL,
+  `saldo` int(11) NOT NULL,
+  `fecha_carga` date NOT NULL DEFAULT current_timestamp(),
+  `hora_carga` time NOT NULL DEFAULT current_timestamp(),
   `usuario_carga` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -336,9 +379,22 @@ ALTER TABLE `aportes`
   ADD KEY `id_titular` (`id_titular`) USING BTREE;
 
 --
+-- Indices de la tabla `asientos`
+--
+ALTER TABLE `asientos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `comprobantes`
 --
 ALTER TABLE `comprobantes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_titular` (`id_titular`) USING BTREE;
+
+--
+-- Indices de la tabla `contabilidad`
+--
+ALTER TABLE `contabilidad`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_titular` (`id_titular`) USING BTREE;
 
@@ -401,7 +457,19 @@ ALTER TABLE `afiliado_titular`
 -- AUTO_INCREMENT de la tabla `aportes`
 --
 ALTER TABLE `aportes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `asientos`
+--
+ALTER TABLE `asientos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `contabilidad`
+--
+ALTER TABLE `contabilidad`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `departamentos_sj`

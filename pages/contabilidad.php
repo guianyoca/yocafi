@@ -11,6 +11,9 @@
 	$tipo_usuario = $_SESSION['tipo_usuario'];
 
     $id_titular=$_GET['id'];
+
+    $sql2 = "SELECT * FROM asientos";
+    $resultado2 = $mysqli->query($sql2);
 	
 ?>
 
@@ -38,7 +41,12 @@
             <div id="layoutSidenav_content">
                 <main>
                 <div class="container mt-4"> 
-                    <h1 class="text-center">Agregar Nueva Movimiento de Aporte</h1>
+                    <h1 class="text-center">Agregar Nuevo Movimiento Contable</h1>
+                    <div class="row">
+                            <div class='col p-5'>
+                            <a href="nuevo_documento.php"class='btn btn-primary col-4'>Agregar Asiento +</a>
+                            </div>
+                        </div>
                 </div>
                 
 <div class="container mt-5">
@@ -46,25 +54,23 @@
         <input type="hidden" name="id_titular" value="<?php echo $id_titular; ?>">
         <div class="row">
 
-            <div class="col-md-6">
+        <div class="col-md-4">
                 <div class="form-group">
-                    <label for="concepto">Concepto:</label>
-                    <select class="form-control" name="concepto">
-                        <option value="CUOTA SOCIO">CUOTA SOCIO</option>
-                        <option value="CUOTA COLATERAL">CUOTA COLATERAL</option>
-                        <option value="PROVEDURIA">PROVEDURIA</option>
-                        <option value="CAMPING">CAMPING</option>
-                        <option value="OTRO">OTRO</option>
+                    <label for="asiento">Concepto (Asiento):</label>
+                    <select class="form-control" name="asiento">
+                    <?php while ($row2 = $resultado2->fetch_assoc()) { ?>
+                        <option value="<?php echo $row2['nombre']; ?>"><?php echo $row2['nombre']; ?></option>
+                    <?php } ?>
                     </select>  
                 </div>
-            </div> 
+            </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="tipo_aporte">Tipo:</label>
+                    <label for="tipo_asiento">Tipo:</label>
                     <select class="form-control" name="tipo_aporte">
-                        <option value="DEUDA">DEUDA</option>
-                        <option value="PAGO">PAGO</option>
+                        <option value="DEBE">DEBE</option>
+                        <option value="HABER">HABER</option>
                     </select>  
                 </div>
             </div> 

@@ -39,7 +39,10 @@
 
 							<!-- ///////////// -->
 							<div class="sb-sidenav-menu-heading">Tesoreria</div>
-                             <a class="nav-link" href="acientos.php"
+							<a class="nav-link" href="comprobantes.php"
+							><div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+							Comprobantes</a>
+                             <a class="nav-link" href="contabilidad.php"
 							><div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
 							Acientos</a>
 							<a class="nav-link" href="libro_mayor.php"
