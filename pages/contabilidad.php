@@ -10,8 +10,6 @@
 	$usuario = $_SESSION['usuario'];
 	$tipo_usuario = $_SESSION['tipo_usuario'];
 
-    $id_titular=$_GET['id'];
-
     $sql2 = "SELECT * FROM asientos";
     $resultado2 = $mysqli->query($sql2);
 	

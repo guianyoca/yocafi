@@ -29,6 +29,7 @@ if ($result->num_rows > 0) {
 }
     $query1="INSERT INTO aportes (id_titular, concepto, descripcion, deuda, saldo, usuario_carga) VALUES ('$id_titular','$concepto','$descripcion','$monto','$saldo','$usuario_carga')";
     $resultado1 = $mysqli->query($query1);
+
 }else{
     $sql2 = "SELECT saldo FROM aportes WHERE id_titular = $id_titular ORDER BY id DESC LIMIT 1";
     $result = $mysqli->query($sql2);
@@ -40,6 +41,9 @@ if ($result->num_rows > 0) {
 }
     $query2="INSERT INTO aportes (id_titular, concepto, descripcion, pago, saldo, usuario_carga) VALUES ('$id_titular','$concepto','$descripcion','$monto','$saldo','$usuario_carga')";
     $resultado2 = $mysqli->query($query2);
+
+    $query1a="INSERT INTO comprobantes (id_titular, monto, concepto, descripcion, usuario_carga) VALUES ('$id_titular','$monto','$concepto','$descripcion','$usuario_carga')";
+    $resultado1a = $mysqli->query($query1a);
 }
     
     echo "<script>

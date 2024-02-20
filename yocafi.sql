@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-02-2024 a las 01:06:04
+-- Tiempo de generación: 20-02-2024 a las 05:02:53
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -132,6 +132,7 @@ CREATE TABLE `comprobantes` (
   `monto` int(11) NOT NULL,
   `concepto` text NOT NULL,
   `descripcion` text NOT NULL,
+  `estado` varchar(50) NOT NULL DEFAULT 'PENDIENTE',
   `fecha_carga` date NOT NULL,
   `hora_carga` time NOT NULL,
   `usuario_carga` varchar(50) NOT NULL
