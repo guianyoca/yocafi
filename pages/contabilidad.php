@@ -42,16 +42,14 @@
                     <h1 class="text-center">Agregar Nuevo Movimiento Contable</h1>
                     <div class="row">
                             <div class='col p-5'>
-                            <a href="nuevo_documento.php"class='btn btn-primary col-4'>Agregar Asiento +</a>
+                            <a href="nuevo_asiento.php"class='btn btn-primary col-4'>Agregar Asiento +</a>
                             </div>
                         </div>
                 </div>
                 
 <div class="container mt-5">
-    <form method="post" action="registra_aporte.php">
-        <input type="hidden" name="id_titular" value="<?php echo $id_titular; ?>">
+    <form method="post" action="registra_contabilidad.php">
         <div class="row">
-
         <div class="col-md-4">
                 <div class="form-group">
                     <label for="asiento">Concepto (Asiento):</label>
@@ -66,7 +64,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="tipo_asiento">Tipo:</label>
-                    <select class="form-control" name="tipo_aporte">
+                    <select class="form-control" name="tipo_asiento">
                         <option value="DEBE">DEBE</option>
                         <option value="HABER">HABER</option>
                     </select>  

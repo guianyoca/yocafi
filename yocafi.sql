@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-02-2024 a las 05:02:53
+-- Tiempo de generación: 22-02-2024 a las 11:00:29
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -118,7 +118,8 @@ CREATE TABLE `asientos` (
 --
 
 INSERT INTO `asientos` (`id`, `codigo`, `nombre`) VALUES
-(1, 1, 'CAJA');
+(1, 1, 'CAJA'),
+(2, 2, 'CUOTA SOCIO');
 
 -- --------------------------------------------------------
 
@@ -464,7 +465,7 @@ ALTER TABLE `aportes`
 -- AUTO_INCREMENT de la tabla `asientos`
 --
 ALTER TABLE `asientos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `contabilidad`
