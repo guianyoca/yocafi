@@ -11,43 +11,25 @@ session_start();
 	$usuario_carga = $_SESSION['usuario'];
 	$tipo_usuario = $_SESSION['tipo_usuario'];
 
-    $concepto=$_POST['concepto'];
-    $tipo_aporte=$_POST['tipo_aporte'];
+    $asiento=$_POST['asiento'];
+    $tipo_asiento=$_POST['tipo_asiento'];
     $monto=$_POST['monto'];
     $descripcion=$_POST['descripcion'];
 
-if ($tipo_aporte=='DEUDA') {
-    $monto=-$monto;
-    $sql = "SELECT saldo FROM contabilidad WHERE id_titular = $id_titular ORDER BY id DESC LIMIT 1";
-    $result = $mysqli->query($sql);
-if ($result->num_rows > 0) {
-    // Obtener el resultado
-    $row = $result->fetch_assoc();
-    $ultimoSaldo = $row["saldo"];
-    $saldo=$ultimoSaldo+$monto;
-}
-    $query1="INSERT INTO contabilidad (id_titular, concepto, descripcion, deuda, saldo, usuario_carga) VALUES ('$id_titular','$concepto','$descripcion','$monto','$saldo','$usuario_carga')";
+if ($tipo_asiento=='DEBE') {
+   
+    $query1="INSERT INTO contabilidad (concepto, descripcion, debe, usuario_carga) VALUES ('$asiento','$descripcion','$monto','$usuario_carga')";
     $resultado1 = $mysqli->query($query1);
 
 }else{
-    $sql2 = "SELECT saldo FROM contabilidad WHERE id_titular = $id_titular ORDER BY id DESC LIMIT 1";
-    $result = $mysqli->query($sql2);
-if ($result->num_rows > 0) {
-    // Obtener el resultado
-    $row = $result->fetch_assoc();
-    $ultimoSaldo = $row["saldo"];
-    $saldo=$ultimoSaldo+$monto;
-}
-    $query2="INSERT INTO contabilidad (id_titular, concepto, descripcion, pago, saldo, usuario_carga) VALUES ('$id_titular','$concepto','$descripcion','$monto','$saldo','$usuario_carga')";
-    $resultado2 = $mysqli->query($query2);
-
-    $query1a="INSERT INTO contabilidad (id_titular, monto, concepto, descripcion, usuario_carga) VALUES ('$id_titular','$monto','$concepto','$descripcion','$usuario_carga')";
-    $resultado1a = $mysqli->query($query1a);
+   
+$query1="INSERT INTO contabilidad (concepto, descripcion, haber, usuario_carga) VALUES ('$asiento','$descripcion','$monto','$usuario_carga')";
+$resultado1 = $mysqli->query($query1);
 }
     
     echo "<script>
 alert('Se Registro Con Exito!');
-window.location.href='libro_mayor.php';
+window.location.href='contabilidad.php';
 </script>";
 
 

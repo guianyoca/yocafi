@@ -53,25 +53,25 @@
 							<a class="nav-link" href="libro_mayor.php"
 							><div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
 							Libro Mayor</a>
-							<a class="nav-link" href="liquidacion_sueldos.php"
+							<a class="nav-link" href="#"
 							><div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
 							Sueldos</a>
 
 							<!-- ///////////// -->
 							<div class="sb-sidenav-menu-heading">Camping</div>
-                             <a class="nav-link" href="agenda_camping.php"
+                             <a class="nav-link" href="#"
 							><div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
 							Agenda</a>
-							<a class="nav-link" href="cargo_extra.php"
+							<a class="nav-link" href="#"
 							><div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
 							Cargos Extra</a>
 
 							<!-- ///////////// -->
 							<div class="sb-sidenav-menu-heading">Proveduria</div>
-                             <a class="nav-link" href="ventas_proveduria.php"
+                             <a class="nav-link" href="#"
 							><div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
 							Venta</a>
-							<a class="nav-link" href="stock_proveduria.php"
+							<a class="nav-link" href="#"
 							><div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
 							Stock</a>
 								

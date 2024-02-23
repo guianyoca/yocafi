@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-02-2024 a las 11:00:29
+-- Tiempo de generación: 23-02-2024 a las 04:55:27
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -147,17 +147,22 @@ CREATE TABLE `comprobantes` (
 
 CREATE TABLE `contabilidad` (
   `id` int(11) NOT NULL,
-  `id_titular` int(11) NOT NULL,
-  `codigo` varchar(50) NOT NULL,
   `concepto` text DEFAULT NULL,
   `descripcion` text DEFAULT NULL,
   `debe` int(11) DEFAULT NULL,
   `haber` int(11) DEFAULT NULL,
-  `saldo` int(11) NOT NULL,
   `fecha_carga` date NOT NULL DEFAULT current_timestamp(),
   `hora_carga` time NOT NULL DEFAULT current_timestamp(),
   `usuario_carga` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `contabilidad`
+--
+
+INSERT INTO `contabilidad` (`id`, `concepto`, `descripcion`, `debe`, `haber`, `fecha_carga`, `hora_carga`, `usuario_carga`) VALUES
+(1, 'CAJA', 'PAGO DE AGUA', 1000, NULL, '2024-02-22', '20:42:01', 'admin'),
+(2, 'CAJA', 'COBRO DE RIFA', NULL, 3000, '2024-02-23', '00:13:34', 'admin');
 
 -- --------------------------------------------------------
 
@@ -397,8 +402,7 @@ ALTER TABLE `comprobantes`
 -- Indices de la tabla `contabilidad`
 --
 ALTER TABLE `contabilidad`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_titular` (`id_titular`) USING BTREE;
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `departamentos_sj`
@@ -471,7 +475,7 @@ ALTER TABLE `asientos`
 -- AUTO_INCREMENT de la tabla `contabilidad`
 --
 ALTER TABLE `contabilidad`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `departamentos_sj`

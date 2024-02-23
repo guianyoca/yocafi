@@ -17,7 +17,7 @@
     $fecha_desde=$_POST['fecha_desde'];
     $fecha_hasta=$_POST['fecha_hasta'];
 
-    $sql = "SELECT * FROM contabilidad WHERE concepto='$concepto' AND fecha_carga BETWEEN '$fecha_desde' AND 'fecha_hasta'";
+    $sql = "SELECT * FROM contabilidad WHERE concepto='$concepto' AND fecha_carga BETWEEN '$fecha_desde' AND '$fecha_hasta'";
     $resultado = $mysqli->query($sql);
     
     
@@ -45,11 +45,9 @@
                 <thead>
                     <tr>
                         <th>Concepto</th>
-                        <th>Monto</th>
                         <th>Descripcion</th>
                         <th>Debe</th>
                         <th>Haber</th>
-                        <th>Saldo</th>
                         <th>Fecha</th>
                         <th>Hora</th>
                         <th>Usuario</th>
@@ -57,30 +55,39 @@
                     </tr>
                 </thead>
                 <tbody>
-                   <?php while ($row = $resultado->fetch_assoc()) { ?>
+                   <?php 
+                   $debe=0;
+                   $haber=0;
+                   while ($row = $resultado->fetch_assoc()) { ?>
                     <tr>
                         <td><?php echo $row['concepto']; ?></td>
-                        <td><?php echo $row['monto']; ?></td>
                         <td><?php echo $row['descripcion']; ?></td>
                         <td><?php echo $row['debe']; ?></td>
                         <td><?php echo $row['haber']; ?></td>
-                        <td><?php echo $row['saldo']; ?></td>
                         <td><?php echo $row['fecha_carga']; ?></td>
                         <td><?php echo $row['hora_carga']; ?></td>
                         <td><?php echo $row['usuario_carga']; ?></td>
-                        
+                        <?php $debe=$debe+$row['debe'];
+                                $haber=$haber+$row['haber'];
+                        ?>
 
-                         <td><a href="aceptar_comprobante.php?id=<?php echo $row['id_titular']; ?>"class='btn btn-primary col-12 mr-2'>Aceptar</a><a href="anular_comprobante.php?id=<?php echo $row['id_titular']; ?>"class='btn btn-primary col-12 mr-2'>Anular</a></td>
+                         <td><a href="anular_asiento.php?id=<?php echo $row['id']; ?>"class='btn btn-danger col-12 mr-2'>Anular</a></td>
                    
                     </tr>
                     <?php } ?>
                 </tbody>
             </table>  
-         
            </div>
        </div> 
+       <?php
+$saldo = $haber - $debe;
+$clase_estilo = $saldo >= 0 ? "text-success" : "text-danger";
+
+echo "<h1>El Saldo entre $fecha_desde hasta $fecha_hasta del concepto $concepto es: <span class='$clase_estilo'>$saldo</span></h1>";
+?>
+
     </div>
-   
+    
     
 
     <!-- Optional JavaScript -->

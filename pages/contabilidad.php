@@ -82,7 +82,7 @@
                 <div class="form-group">
                     <label for="descripcion">Descripcion:</label>
                     <textarea name="descripcion" class="form-control" required>
-                    </textarea>   
+                    </textarea>
                 </div>
             </div>
     
