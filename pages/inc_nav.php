@@ -21,7 +21,7 @@
                                 		<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>		
 									</a>
 										<div class="collapse" id="informes" aria-labelledby="headingOne" 		data-parent="#sidenavAccordion">
-											<nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="#">1</a><a class="nav-link" href="#">2</a></nav>
+											<nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="estadisticas_afiliados.php">Estadisticas</a><a class="nav-link" href="#">2</a></nav>
                             			</div>
 								<!-- ///////////// -->
 								<div class="sb-sidenav-menu-heading">Aportes</div>
