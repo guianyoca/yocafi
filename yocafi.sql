@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-02-2024 a las 10:23:22
+-- Tiempo de generación: 27-02-2024 a las 06:34:35
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -59,18 +59,6 @@ CREATE TABLE `afiliado_titular` (
   `usuario_edita` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `afiliado_titular`
---
-
-INSERT INTO `afiliado_titular` (`id`, `nombre`, `apellido`, `dni`, `fecha_nacimiento`, `domicilio`, `telefono`, `email`, `departamento`, `estado_civil`, `genero`, `tipo_socio`, `servicio_salud`, `socio_vitalicio`, `padron`, `sector_laboral`, `fecha_carga`, `hora_carga`, `usuario_carga`, `estado`, `fecha_estado`, `hora_estado`, `usuario_estado`, `fecha_baja`, `hora_baja`, `usuario_baja`, `fecha_edicion`, `hora_edicion`, `usuario_edita`) VALUES
-(1, 'Guille', 'Yornet', '36034573', '1992-07-01', 'LIMA 1397 barrio victoria', '2645457386', 'guianyoca@gmail.com', 'RAWSON', 'SOLTERO', 'MASCULINO', 'POLICIA EN ACTIVIDAD', 'SI', 'NO', '5067681', '98', '2023-11-27', '00:00:00', '', 'HABILITADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, ''),
-(2, 'sad', 'asd', '36034573', '0015-02-21', 'asd', '+542645457386', 'guianyoca@gmail.com', 'CAPITAL', 'CASADO', 'MASCULINO', 'POLICIA RETIRADO', 'SI', 'NO', '988595', '97', '2023-12-11', '00:00:00', '', 'HABILITADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, ''),
-(3, 'Guille', 'Yornet', '36034575', '0000-00-00', 'LIMA', '+542645457386', 'guianyoca@gmail.com', 'CAPITAL', 'SOLTERO', 'MASCULINO', 'POLICIA EN ACTIVIDAD', 'SI', 'NO', '6546', '0', '2024-01-07', '00:00:00', '07-01-2024', 'HABILITADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, ''),
-(4, 'Guille', 'Yornet', '36034579', '0009-05-02', 'LIMA', '+542645457386', 'guianyoca@gmail.com', 'CAPITAL', 'SOLTERO', 'MASCULINO', 'POLICIA EN ACTIVIDAD', 'SI', 'NO', '958989', '0', '2024-01-07', '00:00:00', 'admin', 'HABILITADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, ''),
-(5, 'CARLOS', 'GODOY', '89858745', '0002-02-22', 'PEDRO VALDIVIA 1234 OESTE', '264897952', 'tr@gl.com', 'CAPITAL', 'VIUDO', 'MASCULINO', 'POLICIA RETIRADO', 'NO', '', '7456', '0', NULL, NULL, 'admin', 'HABILITADO', NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00', '20:21:56', 'admin'),
-(6, 'TOTO', 'RODRIGUEZ', '7854122', '1955-04-02', 'AGUILAR 321 SUR', '2645987878', 'toto@gmail.com', 'RAWSON', 'CASADO', 'MASCULINO', 'OFICIAL POLICIA DE SJ', 'NO', '', '589548', '97', '0000-00-00', '22:21:17', 'admin', 'HABILITADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -89,17 +77,6 @@ CREATE TABLE `aportes` (
   `hora_carga` time NOT NULL DEFAULT current_timestamp(),
   `usuario_carga` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `aportes`
---
-
-INSERT INTO `aportes` (`id`, `id_titular`, `concepto`, `descripcion`, `deuda`, `pago`, `saldo`, `fecha_carga`, `hora_carga`, `usuario_carga`) VALUES
-(1, 5, 'CUOTA SOCIO', 'PAGA MES DE FEBRERO 2024', -5000, 5000, 0, '2024-02-10', '20:57:09', 'admin'),
-(2, 5, 'CUOTA SOCIO', '                    ', -4000, NULL, -4000, '2024-02-17', '19:36:23', 'admin'),
-(3, 5, 'CUOTA SOCIO', '                    pago cuota', NULL, 4000, 0, '2024-02-17', '19:36:52', 'admin'),
-(4, 5, 'OTRO', '                    prestamo', -7000, NULL, -7000, '2024-02-17', '19:42:50', 'admin'),
-(6, 5, 'OTRO', '               paga parte     ', NULL, 3000, -4000, '2024-02-17', '19:45:45', 'admin');
 
 -- --------------------------------------------------------
 
@@ -134,9 +111,12 @@ CREATE TABLE `comprobantes` (
   `concepto` text NOT NULL,
   `descripcion` text NOT NULL,
   `estado` varchar(50) NOT NULL DEFAULT 'PENDIENTE',
-  `fecha_carga` date NOT NULL,
-  `hora_carga` time NOT NULL,
-  `usuario_carga` varchar(50) NOT NULL
+  `fecha_carga` date NOT NULL DEFAULT current_timestamp(),
+  `hora_carga` time NOT NULL DEFAULT current_timestamp(),
+  `usuario_carga` varchar(50) NOT NULL,
+  `fecha_estado` date DEFAULT NULL,
+  `hora_estado` time DEFAULT NULL,
+  `usuario_estado` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -155,14 +135,6 @@ CREATE TABLE `contabilidad` (
   `hora_carga` time NOT NULL DEFAULT current_timestamp(),
   `usuario_carga` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `contabilidad`
---
-
-INSERT INTO `contabilidad` (`id`, `concepto`, `descripcion`, `debe`, `haber`, `fecha_carga`, `hora_carga`, `usuario_carga`) VALUES
-(1, 'CAJA', 'PAGO DE AGUA', 1000, NULL, '2024-02-22', '20:42:01', 'admin'),
-(2, 'CAJA', 'COBRO DE RIFA', NULL, 3000, '2024-02-23', '00:13:34', 'admin');
 
 -- --------------------------------------------------------
 
@@ -216,14 +188,6 @@ CREATE TABLE `documentos` (
   `usuario_carga` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `documentos`
---
-
-INSERT INTO `documentos` (`id`, `id_titular`, `descripcion`, `ubicacion`, `fecha_carga`, `hora_carga`, `usuario_carga`) VALUES
-(3, 3, '5641', 'documentos/escudo sj vectorizado.png', '2024-01-31', '00:56:05', 'admin'),
-(4, 3, '63543', 'documentos/1.png', '2024-01-31', '00:56:36', 'admin');
-
 -- --------------------------------------------------------
 
 --
@@ -245,14 +209,6 @@ CREATE TABLE `integrantes` (
   `usuario_carga` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `integrantes`
---
-
-INSERT INTO `integrantes` (`id`, `id_titular`, `nombre`, `apellido`, `dni`, `fecha_nacimiento`, `genero`, `vinculo`, `estado`, `fecha_carga`, `hora_carga`, `usuario_carga`) VALUES
-(6, 4, 'UGCFDKJHGCKJU', 'JFCVLICFV', 5181691, '0001-11-11', 'MASCULINO', 'CONYUGUE', 'HABILITADO', '2024-01-10', '23:01:35', 'admin'),
-(7, 4, 'OGHOADSF', 'AGBRBAERTBH', 19169919, '0001-11-11', 'MASCULINO', 'CONYUGUE', 'HABILITADO', '2024-01-10', '23:03:28', 'admin');
-
 -- --------------------------------------------------------
 
 --
@@ -268,14 +224,6 @@ CREATE TABLE `observaciones` (
   `hora_carga` time NOT NULL DEFAULT current_timestamp(),
   `usuario_carga` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `observaciones`
---
-
-INSERT INTO `observaciones` (`id`, `id_titular`, `observacion`, `tipo_observacion`, `fecha_carga`, `hora_carga`, `usuario_carga`) VALUES
-(1, 4, 'asfdsafsdfasdfgsda', 'HABILITA', '2024-01-29', '22:30:55', 'admin'),
-(2, 3, '                SE MUESTRA PRUEBA    ', 'OTRO', '2024-02-12', '13:39:47', 'admin');
 
 -- --------------------------------------------------------
 
@@ -328,21 +276,22 @@ INSERT INTO `sectores_laborales` (`id`, `centro`, `descripcion`) VALUES
 CREATE TABLE `tipos_socios` (
   `id` int(11) NOT NULL,
   `tipo` text NOT NULL,
-  `descripcion` text NOT NULL
+  `descripcion` text NOT NULL,
+  `valor_servicio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `tipos_socios`
 --
 
-INSERT INTO `tipos_socios` (`id`, `tipo`, `descripcion`) VALUES
-(1, 'POLICIA EN ACTIVIDAD', 'POLCIA AGENTE O SUBOFICIAL QUE SE ENCUENTRE EN ACTIVIDAD AUN'),
-(2, 'POLICIA RETIRADO', 'POLCIA AGENTE O SUBOFICIAL QUE SE ENCUENTRE EN ESTADO DE RETIRO DE LA ACTIVIDAD'),
-(3, 'OFICIAL POLICIA DE SJ', 'POLCIA OFICIAL DE LA POLICIA DE SAN JUAN QUE SE ENCUENTRE EN ACTIVIDAD AUN'),
-(4, 'PENITENCIARIO', 'PERSONAL DE LA FUERZA PENITENCIARIA QUE SE ENCUENTRE EN ACTIVIDAD AUN'),
-(5, 'DOCENTE', 'EMPLEADO PUBLICO DEL SECTOR EDUCATIVO QUE EL DESCUENTO SE REALIZARA POR COMPUTOS'),
-(6, 'PENSIONADO', 'PERSONA QUE SE QUEDA CON EL BENEFICIO DE SU PARIENTE FALLECIDO'),
-(7, 'ADHERENTE', 'PERSONA QUE PAGA DIRECTO POR SEDE');
+INSERT INTO `tipos_socios` (`id`, `tipo`, `descripcion`, `valor_servicio`) VALUES
+(1, 'POLICIA EN ACTIVIDAD', 'POLCIA AGENTE O SUBOFICIAL QUE SE ENCUENTRE EN ACTIVIDAD AUN', 9000),
+(2, 'POLICIA RETIRADO', 'POLCIA AGENTE O SUBOFICIAL QUE SE ENCUENTRE EN ESTADO DE RETIRO DE LA ACTIVIDAD', 5000),
+(3, 'OFICIAL POLICIA DE SJ', 'POLCIA OFICIAL DE LA POLICIA DE SAN JUAN QUE SE ENCUENTRE EN ACTIVIDAD AUN', 9000),
+(4, 'PENITENCIARIO', 'PERSONAL DE LA FUERZA PENITENCIARIA QUE SE ENCUENTRE EN ACTIVIDAD AUN', 9000),
+(5, 'DOCENTE', 'EMPLEADO PUBLICO DEL SECTOR EDUCATIVO QUE EL DESCUENTO SE REALIZARA POR COMPUTOS', 9000),
+(6, 'PENSIONADO', 'PERSONA QUE SE QUEDA CON EL BENEFICIO DE SU PARIENTE FALLECIDO', 3000),
+(7, 'ADHERENTE', 'PERSONA QUE PAGA DIRECTO POR SEDE', 8000);
 
 -- --------------------------------------------------------
 
@@ -457,13 +406,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `afiliado_titular`
 --
 ALTER TABLE `afiliado_titular`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `aportes`
 --
 ALTER TABLE `aportes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `asientos`
@@ -472,10 +421,16 @@ ALTER TABLE `asientos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT de la tabla `comprobantes`
+--
+ALTER TABLE `comprobantes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `contabilidad`
 --
 ALTER TABLE `contabilidad`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `departamentos_sj`
@@ -487,19 +442,19 @@ ALTER TABLE `departamentos_sj`
 -- AUTO_INCREMENT de la tabla `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `integrantes`
 --
 ALTER TABLE `integrantes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `observaciones`
 --
 ALTER TABLE `observaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `sectores_laborales`
