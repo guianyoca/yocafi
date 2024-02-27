@@ -39,9 +39,7 @@ if ($result->num_rows > 0) {
     $ultimoSaldo = $row["saldo"];
     $saldo=$ultimoSaldo+$monto;
 }
-    $query2="INSERT INTO aportes (id_titular, concepto, descripcion, pago, saldo, usuario_carga) VALUES ('$id_titular','$concepto','$descripcion','$monto','$saldo','$usuario_carga')";
-    $resultado2 = $mysqli->query($query2);
-
+    
     $query1a="INSERT INTO comprobantes (id_titular, monto, concepto, descripcion, usuario_carga) VALUES ('$id_titular','$monto','$concepto','$descripcion','$usuario_carga')";
     $resultado1a = $mysqli->query($query1a);
 }

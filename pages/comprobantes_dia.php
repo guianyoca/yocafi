@@ -15,7 +15,10 @@
     $hoy=date('d-m-Y');
 
 
-    $sql = "SELECT * FROM comprobantes WHERE fecha_carga=$hoysql";
+    $sql = "SELECT afiliado_titular.*, comprobantes.*
+    FROM afiliado_titular
+    JOIN comprobantes ON afiliado_titular.id = comprobantes.id_titular
+    WHERE comprobantes.fecha_carga='$hoysql'";
     $resultado = $mysqli->query($sql);
     
 ?>
@@ -63,14 +66,16 @@
                         <td><?php echo $row['monto']; ?></td>
                         <td><?php echo $row['concepto']; ?></td>
                         <td><?php echo $row['descripcion']; ?></td>
-                        <td><?php echo $row['estado']; ?></td>
-                        <td><?php echo $row['fecha']; ?></td>
-                        <td><?php echo $row['hora']; ?></td>
-                        <td><?php echo $row['usuario']; ?></td>
+                        <td <?php if($row['estado']=='PENDIENTE'){?> class='alert-warning'<?php }elseif($row['estado']=='PAGADO'){ ?> class='alert-success'<?php }else{?>class='alert-danger'<?php } ?>><?php echo $row['estado']; ?></td>
+                        <td><?php echo $row['fecha_carga']; ?></td>
+                        <td><?php echo $row['hora_carga']; ?></td>
+                        <td><?php echo $row['usuario_carga']; ?></td>
                         
 
-                         <td><a href="aceptar_comprobante.php?id=<?php echo $row['id_titular']; ?>"class='btn btn-primary col-12 mr-2'>Aceptar</a><a href="anular_comprobante.php?id=<?php echo $row['id_titular']; ?>"class='btn btn-primary col-12 mr-2'>Anular</a></td>
-                   
+                         <td>
+                         <?php if ($row['estado']=='PENDIENTE'){?>   
+                         <a href="aceptar_comprobante.php?id=<?php echo $row['id']; ?>&id_titular=<?php echo $row['id_titular']; ?>&concepto=<?php echo $row['concepto']; ?>&descripcion=<?php echo $row['descripcion']; ?>&monto=<?php echo $row['monto']; ?>"class='btn btn-success col-6 mr-2'>Aceptar</a><a href="anular_comprobante.php?id=<?php echo $row['id']; ?>"class='btn btn-danger col-6 mr-2'>Anular</a></td>
+                           <?php }?> 
                     </tr>
                     <?php } ?>
                 </tbody>
