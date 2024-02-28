@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-02-2024 a las 06:34:35
+-- Tiempo de generación: 28-02-2024 a las 05:31:08
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -59,6 +59,13 @@ CREATE TABLE `afiliado_titular` (
   `usuario_edita` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `afiliado_titular`
+--
+
+INSERT INTO `afiliado_titular` (`id`, `nombre`, `apellido`, `dni`, `fecha_nacimiento`, `domicilio`, `telefono`, `email`, `departamento`, `estado_civil`, `genero`, `tipo_socio`, `servicio_salud`, `socio_vitalicio`, `padron`, `sector_laboral`, `fecha_carga`, `hora_carga`, `usuario_carga`, `estado`, `fecha_estado`, `hora_estado`, `usuario_estado`, `fecha_baja`, `hora_baja`, `usuario_baja`, `fecha_edicion`, `hora_edicion`, `usuario_edita`) VALUES
+(1, 'GUILLERMO ANDRES', 'YORNET', '36034573', '1992-07-01', 'LIMA 1397', '2645457386', 'guianyoca@gmail.com', 'RAWSON', 'SOLTERO', 'MASCULINO', 'POLICIA EN ACTIVIDAD', 'SI', '', '5067681', '97', '2024-02-27', '17:43:27', 'admin', 'HABILITADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -77,6 +84,13 @@ CREATE TABLE `aportes` (
   `hora_carga` time NOT NULL DEFAULT current_timestamp(),
   `usuario_carga` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `aportes`
+--
+
+INSERT INTO `aportes` (`id`, `id_titular`, `concepto`, `descripcion`, `deuda`, `pago`, `saldo`, `fecha_carga`, `hora_carga`, `usuario_carga`) VALUES
+(1, 1, 'CUOTA SOCIO', 'DEUDA DE CUOTA MES FEBRERO 2024', 9000, NULL, -9000, '2024-02-27', '17:43:27', 'admin');
 
 -- --------------------------------------------------------
 
@@ -118,6 +132,13 @@ CREATE TABLE `comprobantes` (
   `hora_estado` time DEFAULT NULL,
   `usuario_estado` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `comprobantes`
+--
+
+INSERT INTO `comprobantes` (`id`, `id_titular`, `monto`, `concepto`, `descripcion`, `estado`, `fecha_carga`, `hora_carga`, `usuario_carga`, `fecha_estado`, `hora_estado`, `usuario_estado`) VALUES
+(1, 1, 9000, 'CUOTA SOCIO', 'DEUDA DE CUOTA MES FEBRERO 2024', 'PENDIENTE', '2024-02-27', '17:43:27', 'admin', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -224,6 +245,13 @@ CREATE TABLE `observaciones` (
   `hora_carga` time NOT NULL DEFAULT current_timestamp(),
   `usuario_carga` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `observaciones`
+--
+
+INSERT INTO `observaciones` (`id`, `id_titular`, `observacion`, `tipo_observacion`, `fecha_carga`, `hora_carga`, `usuario_carga`) VALUES
+(1, 1, '                    AGREGA A SU HIJA VALENTINA YORNET DNI 54.930.474', 'AGREGA INTEGRANTE', '2024-02-27', '20:21:38', 'admin');
 
 -- --------------------------------------------------------
 
@@ -406,13 +434,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `afiliado_titular`
 --
 ALTER TABLE `afiliado_titular`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `aportes`
 --
 ALTER TABLE `aportes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `asientos`
@@ -424,7 +452,7 @@ ALTER TABLE `asientos`
 -- AUTO_INCREMENT de la tabla `comprobantes`
 --
 ALTER TABLE `comprobantes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `contabilidad`
@@ -454,7 +482,7 @@ ALTER TABLE `integrantes`
 -- AUTO_INCREMENT de la tabla `observaciones`
 --
 ALTER TABLE `observaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `sectores_laborales`

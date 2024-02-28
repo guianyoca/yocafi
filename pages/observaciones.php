@@ -43,39 +43,46 @@
                     <div class="container">
                         <div class="row">
                             <div class='col'>
-                            <a href="nueva_observacion.php?id=<?php echo $ficha; ?>"class='btn btn-primary col-6'>Agregar Observacion +</a>
+                            <a href="nueva_observacion.php?id=<?php echo $ficha; ?>"class='btn btn-primary col-6 m-3'>Agregar Observacion +</a>
                             </div>
                             <div class='col'>
-                            <a href="#"class='btn btn-primary col-6'>Imprimir</a>
+                            <a href="imprimir_observaciones.php?id=<?php echo $ficha; ?>"class='btn btn-primary col-6 m-3' target="_blank">Imprimir</a>
                             </div>
                         </div>
                     </div>        
     
       
 
- <div class="container mt-5">           
-  <table class="table table-bordered table-primary">
-    <tr>
-        <th>Tipo Observacion</th>
-        <th>Observacion</th>
-        <th>Fecha</th>
-        <th>Hora</th>
-        <th>Usuario</th>
-
-    </tr>
-    <?php while ($row2 = $resultado2->fetch_assoc()) { ?>
-    <tr>
-    
-        <td><?php echo $row2['tipo_observacion']; ?></td>
-        <td><?php echo $row2['observacion']; ?></td>
-        <td><?php echo $row2['fecha_carga']; ?></td>
-        <td><?php echo $row2['hora_carga']; ?></td>
-        <td><?php echo $row2['usuario_carga']; ?></td>
-        
-    </tr>
-    <?php } ?>
-  </table>
-</div>
+                    <div class="container">
+       <div class="row">
+           <div class="col-lg-12">
+            <table id="example" class="table table-bordered  display nowrap" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Tipo de Observación</th>
+                        <th>Observación</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Usuario</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   <?php while ($row2 = $resultado2->fetch_assoc()) { ?>
+                    <tr>
+                        <td><?php echo $row2['tipo_observacion']; ?></td>
+                        <td><?php echo $row2['observacion']; ?></td>
+                        <td><?php echo $row2['fecha_carga']; ?></td>
+                        <td><?php echo $row2['hora_carga']; ?></td>
+                        <td><?php echo $row2['usuario_carga']; ?></td>
+                   
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>  
+         
+           </div>
+       </div> 
+    </div>
 
                     
 

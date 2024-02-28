@@ -17,7 +17,6 @@
     $sql = "SELECT * FROM afiliado_titular WHERE id='$ficha'";
     $resultado = $mysqli->query($sql);
     while ($row = $resultado->fetch_assoc()) {
-        $id_titular=$row['id_titular'];
         $nombre_titular=$row['nombre'].' '.$row['apellido'];
     }
     $sql2 = "SELECT * FROM aportes WHERE id_titular='$ficha'";
@@ -39,49 +38,56 @@
             <div id="layoutSidenav_content">
     <main>
     
-                    <h1 class="text-center">Detalle de Aportes del Afiliado <?php echo $nombre_titular; ?></h1>    
+                    <h1 class="text-center m-5">Detalle de Aportes del Afiliado <?php echo $nombre_titular; ?></h1>    
                     <div class="container">
                         <div class="row">
                             <div class='col'>
-                            <a href="nuevo_aporte.php?id=<?php echo $ficha; ?>"class='btn btn-primary col-6'>Agregar Movimiento +</a>
+                            <a href="nuevo_aporte.php?id=<?php echo $ficha; ?>"class='btn btn-primary col-6 m-3'>Agregar Movimiento +</a>
                             </div>
                             <div class='col'>
-                            <a href="#"class='btn btn-primary col-6'>Imprimir</a>
+                            <a href="imprimir_estado_cuenta.php?id=<?php echo $ficha; ?>"class='btn btn-primary col-6 m-3' target="_blank">Imprimir</a>
                             </div>
                         </div>
                     </div>        
     
       
 
- <div class="container mt-5">           
-  <table class="table table-bordered table-primary">
-    <tr>
-        <th>Concepto</th>
-        <th>Descripcion</th>
-        <th>Deuda</th>
-        <th>Pago</th>
-        <th>Saldo</th>
-        <th>Fecha</th>
-        <th>Hora</th>
-        <th>Usuario</th>
-
-    </tr>
-    <?php while ($row2 = $resultado2->fetch_assoc()) { ?>
-    <tr>
-    
-        <td><?php echo $row2['concepto']; ?></td>
-        <td><?php echo $row2['descripcion']; ?></td>
-        <td><?php echo $row2['deuda']; ?></td>
-        <td><?php echo $row2['pago']; ?></td>
-        <td><?php echo $row2['saldo']; ?></td>
-        <td><?php echo $row2['fecha_carga']; ?></td>
-        <td><?php echo $row2['hora_carga']; ?></td>
-        <td><?php echo $row2['usuario_carga']; ?></td>
-        
-    </tr>
-    <?php } ?>
-  </table>
-</div>
+                    <div class="container">
+       <div class="row">
+           <div class="col-lg-12">
+            <table id="example" class="table table-bordered  display nowrap" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Concepto</th>
+                        <th>Descripción</th>
+                        <th>Deuda</th>
+                        <th>Pago</th>
+                        <th>Saldo</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Usuario</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   <?php while ($row2 = $resultado2->fetch_assoc()) { ?>
+                    <tr>
+                        <td><?php echo $row2['concepto']; ?></td>
+                        <td><?php echo $row2['descripcion']; ?></td>
+                        <td><?php echo $row2['deuda']; ?></td>
+                        <td><?php echo $row2['pago']; ?></td>
+                        <td><?php echo $row2['saldo']; ?></td>
+                        <td><?php echo $row2['fecha_carga']; ?></td>
+                        <td><?php echo $row2['hora_carga']; ?></td>
+                        <td><?php echo $row2['usuario_carga']; ?></td>
+                   
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>  
+         
+           </div>
+       </div> 
+    </div>
 
                     
 

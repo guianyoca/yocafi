@@ -39,8 +39,8 @@
                     <h1 class="text-center">Comprobantes Del dia de hoy <?php echo $hoy; ?></h1>    
     
     <div class="container">
-       <div class="row">
-           <div class="col-lg-12">
+       <div class="row-12">
+           <div class="col-lg-12 m-2">
             <table id="example" class="table table-bordered  display nowrap" cellspacing="0" width="100%">
                 <thead>
                     <tr>

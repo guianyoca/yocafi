@@ -11,7 +11,6 @@
 	$tipo_usuario = $_SESSION['tipo_usuario'];
 
     $id_titular=$_GET['id'];
-    $nombre_titular=$_GET['nombre_titular'];
 	
 	
 ?>
