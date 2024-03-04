@@ -13,14 +13,14 @@
                                 		<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>		
 									</a>
 										<div class="collapse" id="afiliaciones" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-											<nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="ver_afiliados.php">Ver afiliados</a><a class="nav-link" href="nuevo_afiliado.php">Agregar Afiliado</a></nav>
+											<nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="ver_afiliados.php">Ver Ficha Titular</a><a class="nav-link" href="consulta_afiliado.php">Consulta Afiliado</a><a class="nav-link" href="nuevo_afiliado.php">Agregar Afiliado</a></nav>
                             			</div>
 										<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#informes_afiliaciones" aria-expanded="false" aria-controls="informes_afiliaciones">
 										<div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 		Informes
                                 		<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>		
 									</a>
-										<div class="collapse" id="informes_afiliaciones" aria-labelledby="headingOne	data-parent="#sidenavAccordion">
+										<div class="collapse" id="informes_afiliaciones" aria-labelledby="headingOne"	data-parent="#sidenavAccordion">
 											<nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="estadisticas_afiliados.php">Estadisticas</a><a class="nav-link" href="resumen_afiliados.php">Resumen de Afiliados</a></nav>
                             			</div>
                             			<?php } ?>
@@ -63,7 +63,7 @@
 							<!-- ///////////// -->
 							<?php if($tipo_usuario == 1 || $tipo_usuario == 5 || $tipo_usuario == 25) { ?>
 							<div class="sb-sidenav-menu-heading">Camping</div>
-                             <a class="nav-link" href="#"
+                             <a class="nav-link" href="agenda_camping.php"
 							><div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
 							Agenda</a>
 							<a class="nav-link" href="#"

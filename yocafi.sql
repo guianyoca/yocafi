@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-02-2024 a las 05:31:08
+-- Tiempo de generación: 04-03-2024 a las 05:26:57
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -65,6 +65,28 @@ CREATE TABLE `afiliado_titular` (
 
 INSERT INTO `afiliado_titular` (`id`, `nombre`, `apellido`, `dni`, `fecha_nacimiento`, `domicilio`, `telefono`, `email`, `departamento`, `estado_civil`, `genero`, `tipo_socio`, `servicio_salud`, `socio_vitalicio`, `padron`, `sector_laboral`, `fecha_carga`, `hora_carga`, `usuario_carga`, `estado`, `fecha_estado`, `hora_estado`, `usuario_estado`, `fecha_baja`, `hora_baja`, `usuario_baja`, `fecha_edicion`, `hora_edicion`, `usuario_edita`) VALUES
 (1, 'GUILLERMO ANDRES', 'YORNET', '36034573', '1992-07-01', 'LIMA 1397', '2645457386', 'guianyoca@gmail.com', 'RAWSON', 'SOLTERO', 'MASCULINO', 'POLICIA EN ACTIVIDAD', 'SI', '', '5067681', '97', '2024-02-27', '17:43:27', 'admin', 'HABILITADO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `agenda_camping`
+--
+
+CREATE TABLE `agenda_camping` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(80) NOT NULL,
+  `apellido` varchar(80) NOT NULL,
+  `dni` int(11) NOT NULL,
+  `afiliado` varchar(10) NOT NULL DEFAULT 'NO',
+  `servicio` text NOT NULL,
+  `monto` int(11) NOT NULL,
+  `fecha_servicio` date NOT NULL,
+  `hora_servicio` time NOT NULL,
+  `descripcion` text NOT NULL,
+  `fecha_carga` date NOT NULL,
+  `hora_carga` time NOT NULL,
+  `usuario_carga` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -230,6 +252,13 @@ CREATE TABLE `integrantes` (
   `usuario_carga` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `integrantes`
+--
+
+INSERT INTO `integrantes` (`id`, `id_titular`, `nombre`, `apellido`, `dni`, `fecha_nacimiento`, `genero`, `vinculo`, `estado`, `fecha_carga`, `hora_carga`, `usuario_carga`) VALUES
+(1, 1, 'VALENTINA', 'YORNET', 54930474, '2015-09-02', 'FEMENINO', 'HIJO', 'HABILITADO', '2024-02-28', '19:38:21', 'admin');
+
 -- --------------------------------------------------------
 
 --
@@ -298,6 +327,28 @@ INSERT INTO `sectores_laborales` (`id`, `centro`, `descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `servicios`
+--
+
+CREATE TABLE `servicios` (
+  `id` int(11) NOT NULL,
+  `servicio` text NOT NULL,
+  `descripcion` text NOT NULL,
+  `ubicacion` text NOT NULL,
+  `costo` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `servicios`
+--
+
+INSERT INTO `servicios` (`id`, `servicio`, `descripcion`, `ubicacion`, `costo`) VALUES
+(1, 'ENTRADA CAMPING RAWSON', 'INGRESO PARA CAMPING CESAP RAWSON', 'CAMPING RAWSON', 2000),
+(2, 'ALQUILER DE SALON 1 DE CAMPING RAWSON', 'SALON GRANDE CON 8 TABLEROS Y 40 SILLAS', 'CAMPING RAWSON', 15000);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tipos_socios`
 --
 
@@ -353,6 +404,12 @@ INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `correo`, `clave`, `estado`,
 -- Indices de la tabla `afiliado_titular`
 --
 ALTER TABLE `afiliado_titular`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `agenda_camping`
+--
+ALTER TABLE `agenda_camping`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -415,6 +472,12 @@ ALTER TABLE `sectores_laborales`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `servicios`
+--
+ALTER TABLE `servicios`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `tipos_socios`
 --
 ALTER TABLE `tipos_socios`
@@ -435,6 +498,12 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `afiliado_titular`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `agenda_camping`
+--
+ALTER TABLE `agenda_camping`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `aportes`
@@ -476,7 +545,7 @@ ALTER TABLE `documentos`
 -- AUTO_INCREMENT de la tabla `integrantes`
 --
 ALTER TABLE `integrantes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `observaciones`
@@ -489,6 +558,12 @@ ALTER TABLE `observaciones`
 --
 ALTER TABLE `sectores_laborales`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT de la tabla `servicios`
+--
+ALTER TABLE `servicios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `tipos_socios`

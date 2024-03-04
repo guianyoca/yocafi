@@ -1,0 +1,59 @@
+.calendario{
+    display: block;
+    position: relative;
+  }
+  .calendario .container-flex{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    align-content: stretch;
+  }
+  .calendario .item-flex{
+    flex-grow: 1;
+    border:solid 1px #ccc;
+    height: 80px;
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+  .calendario .cRowControls .currentYear{
+    font-size: 1.1em;
+  }
+  .calendario .cRowControls .currentMonth{
+    font-size: 1.6em; line-height: 0.8em;
+  }
+  .calendario .cRowDias{
+    background-color: #999; color:#fff; font-size:1em;
+  }
+  .calendario .cRowDias .item-flex{
+    padding-top:15px;
+    height: 50px;
+  }
+  .calendario .cRowDias{
+    background-color: #999; color:#fff; font-size:0.8em;
+  }
+  .calendario .dia{
+    display: block; clear:both; width:auto; height: auto; min-height:20px; overflot:auto;
+    background-color: #f1f1f1;
+    color:#000; font-size:.75em; text-align:right;
+    border-bottom: 1px solid #ccc;
+    padding-right: 5px;  
+  }
+  button.badge{
+    border:none;
+    cursor:pointer;
+  }
+  
+  /* Area del Listado de Eventos */
+  .listadoEventos{
+    display: block; position: absolute;
+    left:0; right:0; top:0; bottom:0;
+    z-index: 888;
+    background-color: #f1f1f1;
+    display:none;
+    overflow:auto;
+  }
+  .btnCloseCalendar{
+    position: absolute;
+    right:5px; top:5px;
+  }

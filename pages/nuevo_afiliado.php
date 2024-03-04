@@ -38,7 +38,7 @@
     <?php
     include "nav_principal.php";
     ?>
-        <div id="layoutSidenav">
+        <div id="layoutSidenav">a
            <?php
            include "inc_nav.php";
            ?>

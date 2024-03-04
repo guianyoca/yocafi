@@ -9,6 +9,7 @@
         <title>YOCAFI</title>
         <link rel="stylesheet" type="" href="../bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" type="" href="../css/estilos.css">
+        <link rel="stylesheet" type="" href="../css/agenda.css">
         <link href="../css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
@@ -27,4 +28,5 @@
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     <script src="../js/chart.min.js"></script>
+    <script src="../js/agenda.js"></script>
 	</head>
