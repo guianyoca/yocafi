@@ -26,7 +26,7 @@ $tipo_socio=$_POST['tipo_socio'];
 $servicio_salud=$_POST['servicio_salud'];
 $sector_laboral=$_POST['sector_laboral'];
 $num_padron=$_POST['num_padron'];
-$estado="HABILITADO";
+$estado=$_POST['estado'];
 $fecha_edicion=date("d-m-Y"); 
 $hora_edicion=date("H:i:s");
 

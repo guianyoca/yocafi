@@ -177,6 +177,16 @@
                     <input type="number" class="form-control alert-primary" id="num_padron" name="num_padron" autocomplete="off" value="<?php echo $row4['padron']; ?>">
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="servicio_salud">Estado</label>
+                    <select class="form-control alert-primary" name="estado">
+                    <option value="<?php echo $row4['estado']; ?>" selected><?php echo $row4['estado']; ?></option>
+                        <option value="HABILITADO">HABILITADO</option>
+                        <option value="DESHABILITADO">DESHABILITADO</option>
+                    </select>  
+                </div>
+            </div>
         </div>
         <div class="container mt-4 text-center">
             <button type="submit" class="btn btn-lg btn-primary mx-auto">Registrar</button>
